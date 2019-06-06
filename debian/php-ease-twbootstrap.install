@@ -1,0 +1,2 @@
+src/Ease/TWB/*		usr/share/php/EaseTWB/
+debian/composer.json	usr/share/php/EaseTWB/
