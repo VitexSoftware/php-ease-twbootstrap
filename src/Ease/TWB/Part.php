@@ -25,11 +25,9 @@ class Part extends \Ease\Part
     public static function twBootstrapize()
     {
         parent::jQueryze();
-        $webPage = \Ease\Shared::webPage();
-        $webPage->includeCSS($webPage->bootstrapCSS);
-        $webPage->includeCSS($webPage->bootstrapThemeCSS);
-        $webPage->includeJavaScript($webPage->bootstrapJavaScript);
-        
+        \Ease\WebPage::singleton()->includeCSS($webPage->bootstrapCSS);
+        \Ease\WebPage::singleton()->includeCSS($webPage->bootstrapThemeCSS);
+        \Ease\WebPage::singleton()->includeJavaScript($webPage->bootstrapJavaScript);
         return true;
     }
 
