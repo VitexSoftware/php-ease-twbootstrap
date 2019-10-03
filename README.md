@@ -1,3 +1,5 @@
+![Library logo](https://raw.githubusercontent.com/VitexSoftware/ease-twbootstrap/master/project-logo.png)
+
 Ease Framework Twitter Bootstrap 3 Support
 ==========================================
 
