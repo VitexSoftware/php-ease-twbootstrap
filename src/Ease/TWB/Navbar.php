@@ -158,7 +158,7 @@ class Navbar extends \Ease\Html\DivTag
             } else {
                 $targetPage = $href;
             }
-            if ($targetPage == basename(\Ease\Page::phpSelf())) {
+            if ($targetPage == basename(\Ease\Document::phpSelf())) {
                 if ($pull == 'left') {
                     $this->nav->lastItem()->setTagProperties(['class' => 'active']);
                 } else {
@@ -203,7 +203,7 @@ class Navbar extends \Ease\Html\DivTag
     public function &addDropDownMenu($label, $items, $pull = 'left')
     {
         Part::twBootstrapize();
-        \Ease\Shared::webPage()->addJavaScript('$(\'.dropdown-toggle\').dropdown();',
+        \Ease\WebPage::singleton()->addJavaScript('$(\'.dropdown-toggle\').dropdown();',
             null, true);
         $dropDown     = new \Ease\Html\LiTag(null,
             ['class' => 'dropdown', 'id' => $label]);

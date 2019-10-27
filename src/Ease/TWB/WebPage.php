@@ -56,7 +56,7 @@ class WebPage extends \Ease\WebPage
         /*
          * Session Singleton Problem hack
          */
-        if (!count($this->easeShared->statusMessages)) {
+        if (empty($this->easeShared->statusMessages)) {
             return '';
         }
         $htmlFargment = '';
