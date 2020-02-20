@@ -56,18 +56,17 @@ class WebPage extends \Ease\WebPage
         /*
          * Session Singleton Problem hack
          */
-        if (!count($this->easeShared->statusMessages)) {
+        if (empty(\Ease\Shared::singleton()->statusMessages)) {
             return '';
         }
         $htmlFargment = '';
 
         $allMessages = [];
-        foreach ($this->easeShared->statusMessages as $quee => $messages) {
+        foreach (\Ease\Shared::singleton()->statusMessages as $quee => $messages) {
             foreach ($messages as $msgID => $message) {
                 $allMessages[$msgID][$quee] = $message;
             }
         }
-        ksort($allMessages);
         foreach ($allMessages as $messages) {
             $messageType = key($messages);
 

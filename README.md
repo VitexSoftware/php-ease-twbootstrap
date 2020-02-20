@@ -1,5 +1,13 @@
 ![Library logo](https://raw.githubusercontent.com/VitexSoftware/ease-twbootstrap/master/project-logo.png)
 
+[![Latest Stable Version](https://poser.pugx.org/vitexsoftware/ease-twbootstrap/v/stable)](https://packagist.org/packages/vitexsoftware/ease-twbootstrap)
+[![Total Downloads](https://poser.pugx.org/vitexsoftware/ease-twbootstrap/downloads)](https://packagist.org/packages/vitexsoftware/ease-twbootstrap)
+[![Latest Unstable Version](https://poser.pugx.org/vitexsoftware/ease-twbootstrap/v/unstable)](https://packagist.org/packages/vitexsoftware/ease-twbootstrap)
+[![License](https://poser.pugx.org/vitexsoftware/ease-twbootstrap/license)](https://packagist.org/packages/vitexsoftware/ease-twbootstrap)
+[![Monthly Downloads](https://poser.pugx.org/vitexsoftware/ease-twbootstrap/d/monthly)](https://packagist.org/packages/vitexsoftware/ease-twbootstrap)
+[![Daily Downloads](https://poser.pugx.org/vitexsoftware/ease-twbootstrap/d/daily)](https://packagist.org/packages/vitexsoftware/ease-twbootstrap)
+
+
 Ease Framework Twitter Bootstrap 3 Support
 ==========================================
 
