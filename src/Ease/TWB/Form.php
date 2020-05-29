@@ -1,37 +1,23 @@
 <?php
+
 /**
  * Formulář Bootstrapu.
  */
 
 namespace Ease\TWB;
 
-class Form extends \Ease\Html\Form
-{
+class Form extends \Ease\Html\Form {
 
     /**
-     * Formulář Bootstrapu.
+     * Bootstrap3 Form
      *
-     * @param string $formName      jméno formuláře
-     * @param string $formAction    cíl formulář např login.php
-     * @param string $formMethod    metoda odesílání POST|GET
+     * @param string $properties    Several tag properties. Default method is POST
      * @param mixed  $formContents  prvky uvnitř formuláře
-     * @param array  $tagProperties vlastnosti tagu například:
-     *                              array('enctype' => 'multipart/form-data')
      */
-    public function __construct($formName, $formAction = null,
-                                $formMethod = 'post', $formContents = null,
-                                $tagProperties = null)
-    {
-        if (!isset($tagProperties['class'])) {
-            $tagProperties['class'] = 'form-horizontal';
-        } else {
-            if (!strstr($tagProperties['class'], 'form')) {
-                $tagProperties['class'] = 'form-horizontal';
-            }
-        }
-        $tagProperties['role'] = 'form';
-        parent::__construct($formName, $formAction, $formMethod, $formContents,
-            $tagProperties);
+    public function __construct($properties = [], $formContents = null) {
+        $properties['role'] = 'form';
+        parent::__construct($properties, $formContents);
+        $this->addTagClass('form-horizontal');
     }
 
     /**
@@ -43,10 +29,9 @@ class Form extends \Ease\Html\Form
      * @param string $helptext    Dodatečná nápověda
      */
     public function addInput($input, $caption = null, $placeholder = null,
-                             $helptext = null)
-    {
+            $helptext = null) {
         return $this->addItem(new FormGroup($caption, $input, $placeholder,
-                    $helptext));
+                                $helptext));
     }
 
     /**
@@ -57,16 +42,16 @@ class Form extends \Ease\Html\Form
      *
      * @return pointer Odkaz na vložený objekt
      */
-    public function &addItem($pageItem, $pageItemName = null)
-    {
+    public function &addItem($pageItem, $pageItemName = null) {
         if (is_object($pageItem) && method_exists($pageItem, 'setTagClass')) {
             if (strtolower($pageItem->getTagType()) == 'select') {
                 $pageItem->setTagClass(trim(str_replace('form_control', '',
-                            $pageItem->getTagClass().' form-control')));
+                                        $pageItem->getTagClass() . ' form-control')));
             }
         }
         $added = parent::addItem($pageItem, $pageItemName);
 
         return $added;
     }
+
 }

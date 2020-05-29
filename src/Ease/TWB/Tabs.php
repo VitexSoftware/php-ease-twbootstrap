@@ -132,7 +132,7 @@ $(\'#'.$this->getTagID().' a\').click(function (e) {
             if (key($tab) == 'ajax') {
                 $tabProperties['data-url'] = current($tab);
             }
-            $anchor = '#'.\Ease\Brick::lettersOnly( str_replace(['(',')'],'',$this->partName.$tabName));
+            $anchor = '#'.\Ease\Functions::lettersOnly( str_replace(['(',')'],'',$this->partName.$tabName));
             if ($tabName == $this->activeTab) {
                 $tabsUl->addItem(new \Ease\Html\LiTag(new \Ease\Html\ATag($anchor,
                             $tabName, $tabProperties), ['class' => 'active']));
@@ -155,11 +155,11 @@ $(\'#'.$this->getTagID().' a\').click(function (e) {
 
             if ($tabName == $this->activeTab) {
                 $tabDiv->addItem(new \Ease\Html\DivTag($tabContent,
-                        ['id' => $this->partName.\Ease\Brick::lettersOnly($tabName),
+                        ['id' => $this->partName.\Ease\Functions::lettersOnly($tabName),
                         'class' => 'tab-pane active',]));
             } else {
                 $tabDiv->addItem(new \Ease\Html\DivTag($tabContent,
-                        ['id' => $this->partName.\Ease\Brick::lettersOnly($tabName),
+                        ['id' => $this->partName.\Ease\Functions::lettersOnly($tabName),
                         'class' => 'tab-pane',]));
             }
         }
@@ -167,16 +167,16 @@ $(\'#'.$this->getTagID().' a\').click(function (e) {
 
 
         if (key($this->tabs[$this->activeTab]) == 'ajax') {
-            \Ease\Shared::webPage()->addJavaScript('
+             \Ease\WebPage::singleton()->addJavaScript('
 // load first tab content
 $(\'#'.$this->partName.$this->activeTab.'\').load($(\'.active a\').attr("data-url"),function(result){
   $(\'.active a\').tab(\'show\');
 });
 ');
         } else {
-            \Ease\Shared::webPage()->addJavaScript(
+             \Ease\WebPage::singleton()->addJavaScript(
                 '
-        $(\'#'.$this->partName.' a[href="#'.\Ease\Brick::lettersOnly($this->activeTab).'"]\').tab(\'show\');
+        $(\'#'.$this->partName.' a[href="#'.\Ease\Functions::lettersOnly($this->activeTab).'"]\').tab(\'show\');
 ', null, true
             );
         }
