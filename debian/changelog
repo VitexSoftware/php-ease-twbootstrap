@@ -1,4 +1,4 @@
-php-ease-twbootstrap (0.4.2) UNRELEASED; urgency=medium
+php-ease-bootstrap (0.4.2) UNRELEASED; urgency=medium
 
   [ Vítězslav Dvořák ]
   * First release
@@ -8,5 +8,7 @@ php-ease-twbootstrap (0.4.2) UNRELEASED; urgency=medium
 
   [ CyberVitexus ]
   * Form now accept only properties and content
+  * Release v0.4.2
+  * Release v0.4.2
 
- -- CyberVitexus <vitex@exiv.jinonice.czf>  Thu, 18 Jun 2020 22:50:03 +0200
+ -- CyberVitexus <vitex@exiv.jinonice.czf>  Thu, 18 Jun 2020 22:53:35 +0200

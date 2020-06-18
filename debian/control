@@ -1,4 +1,4 @@
-Source: php-ease-twbootstrap
+Source: php-ease-bootstrap
 Build-Depends: debhelper (>= 7.0.50~)
 Section: web
 Standards-Version: 3.9.8
@@ -7,7 +7,7 @@ Uploaders: Vitex <vitex@hippy.cz>
 Priority: optional
 Homepage: https://github.com/VitexSoftware/ease-twbootstrap
 
-Package: php-ease-twbootstrap
+Package: php-ease-bootstrap
 Depends: ${misc:Depends},php-ease-html
 Architecture: all
 Conflicts: ease-framework
