@@ -1,8 +1,12 @@
-php-ease-twbootstrap (0.4) UNRELEASED; urgency=medium
+php-ease-twbootstrap (0.4.2) UNRELEASED; urgency=medium
 
+  [ Vítězslav Dvořák ]
   * First release
   * Meged
   * Meged
   * Merge branch 'master' of github.com:VitexSoftware/ease-twbootstrap
 
- -- Vítězslav Dvořák <vitex@develoid.jinonice.czf>  Thu, 20 Feb 2020 20:27:21 +0100
+  [ CyberVitexus ]
+  * Form now accept only properties and content
+
+ -- CyberVitexus <vitex@exiv.jinonice.czf>  Thu, 18 Jun 2020 22:50:03 +0200
