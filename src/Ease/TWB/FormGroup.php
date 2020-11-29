@@ -2,22 +2,20 @@
 
 namespace Ease\TWB;
 
-class FormGroup extends \Ease\Html\DivTag
-{
+class FormGroup extends \Ease\Html\DivTag {
 
-/**
- * Položka TWBootstrp formuláře.
- *
- * @param string         $label       popisek pole formuláře
- * @param \Ease\Html\Tag $content     widget formuláře
- * @param string         $placeholder předvysvětlující text
- * @param string         $helptext    Nápvěda pod prvkem
- * @param string         $addTagClass CSS třída kterou má být oskiován vložený prvek
- */
+    /**
+     * Položka TWBootstrp formuláře.
+     *
+     * @param string         $label       popisek pole formuláře
+     * @param \Ease\Html\Tag $content     widget formuláře
+     * @param string         $placeholder předvysvětlující text
+     * @param string         $helptext    Nápvěda pod prvkem
+     * @param string         $addTagClass CSS třída kterou má být oskiován vložený prvek
+     */
     public function __construct($label = null, $content = null,
-                                $placeholder = null, $helptext = null,
-                                $addTagClass = 'form-control')
-    {
+            $placeholder = null, $helptext = null,
+            $addTagClass = 'form-control') {
         if (is_object($content) && method_exists($content, 'getTagID')) {
             $id = $content->getTagID();
         } else {
@@ -39,7 +37,8 @@ class FormGroup extends \Ease\Html\DivTag
         $this->addItem($content);
         if ($helptext) {
             $this->addItem(new \Ease\Html\PTag($helptext,
-                    ['class' => 'help-block']));
+                            ['class' => 'help-block']));
         }
     }
+
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Twitter Bootrstap Container.
  *
@@ -8,16 +9,15 @@
 
 namespace Ease\TWB;
 
-class Container extends \Ease\Html\DivTag
-{
+class Container extends \Ease\Html\DivTag {
 
     /**
      * Twitter Bootrstap Container.
      *
      * @param mixed $content
      */
-    public function __construct($content = null)
-    {
+    public function __construct($content = null) {
         parent::__construct($content, ['class' => 'container']);
     }
+
 }

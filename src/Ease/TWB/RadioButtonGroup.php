@@ -2,8 +2,8 @@
 
 namespace Ease\TWB;
 
-class RadioButtonGroup extends \Ease\Container
-{
+class RadioButtonGroup extends \Ease\Container {
+
     /**
      * Jméno.
      *
@@ -40,20 +40,18 @@ class RadioButtonGroup extends \Ease\Container
      * @param string $checked
      * @param bool   $inline
      */
-    public function __construct($name, $radios, $checked = null, $inline = false)
-    {
-        $this->name    = $name;
+    public function __construct($name, $radios, $checked = null, $inline = false) {
+        $this->name = $name;
         $this->checked = $checked;
-        $this->inline  = $inline;
-        $this->radios  = $radios;
+        $this->inline = $inline;
+        $this->radios = $radios;
         parent::__construct();
     }
 
     /**
      * Seskládá pole radiobuttonů.
      */
-    public function finalize()
-    {
+    public function finalize() {
         $class = 'radio';
         if ($this->inline) {
             $class .= '-inline';
@@ -65,11 +63,12 @@ class RadioButtonGroup extends \Ease\Container
             } else {
                 $checked = null;
             }
-            $tagProperties = ['id' => $this->name.$pos++, 'name' => $this->name,
+            $tagProperties = ['id' => $this->name . $pos++, 'name' => $this->name,
                 $checked,];
             $this->addItem(new \Ease\Html\DivTag(new \Ease\Html\LabelTag(null,
-                        [new \Ease\Html\InputRadioTag($this->name, $value,
-                            $tagProperties), $caption]), ['class' => $class]));
+                                    [new \Ease\Html\InputRadioTag($this->name, $value,
+                                        $tagProperties), $caption]), ['class' => $class]));
         }
     }
+
 }

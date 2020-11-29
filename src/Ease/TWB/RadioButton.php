@@ -1,12 +1,12 @@
 <?php
+
 /**
  * RadioButton Twitter Bootstrapu.
  */
 
 namespace Ease\TWB;
 
-class RadioButton extends \Ease\Html\DivTag
-{
+class RadioButton extends \Ease\Html\DivTag {
 
     /**
      *  RadioButton Twitter Bootstrapu.
@@ -17,15 +17,15 @@ class RadioButton extends \Ease\Html\DivTag
      * @param array      $properties
      */
     public function __construct($name = null, $value = null, $caption = null,
-                                $properties = [])
-    {
+            $properties = []) {
         if (isset($properties['id'])) {
             $for = $properties['id'];
         } else {
             $for = $name;
         }
         parent::__construct(
-            new \Ease\Html\LabelTag($for,
-                [new \Ease\Html\InputRadioTag($name, $value, $properties), $caption]));
+                new \Ease\Html\LabelTag($for,
+                        [new \Ease\Html\InputRadioTag($name, $value, $properties), $caption]));
     }
+
 }

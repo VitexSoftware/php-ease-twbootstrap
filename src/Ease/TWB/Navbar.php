@@ -1,12 +1,13 @@
 <?php
+
 /**
  *  NavBar.
  */
 
 namespace Ease\TWB;
 
-class Navbar extends \Ease\Html\DivTag
-{
+class Navbar extends \Ease\Html\DivTag {
+
     /**
      * Vnitřek menu.
      *
@@ -35,30 +36,29 @@ class Navbar extends \Ease\Html\DivTag
      * @param string $brand
      * @param array  $properties
      */
-    public function __construct($name = null, $brand = null, $properties = [])
-    {
+    public function __construct($name = null, $brand = null, $properties = []) {
         if (is_array($properties) && array_key_exists('class', $properties)) {
             $originalClass = $properties['class'];
         } else {
             $originalClass = '';
         }
 
-        $properties['class']    = trim('navbar navbar-default '.$originalClass);
-        $properties['role']     = 'navigation';
-        $properties['name']     = $name;
+        $properties['class'] = trim('navbar navbar-default ' . $originalClass);
+        $properties['role'] = 'navigation';
+        $properties['name'] = $name;
         $this->menuInnerContent = parent::addItem(new \Ease\Html\DivTag(null,
-                    ['class' => 'navbar-inner']));
+                                ['class' => 'navbar-inner']));
         parent::__construct(null, $properties);
         $this->addItem(self::navBarHeader($name, $brand));
-        $navCollapse            = $this->addItem(new \Ease\Html\DivTag(null,
-                ['class' => 'collapse navbar-collapse navbar-'.$name.'-collapse']));
-        $this->nav              = $navCollapse->addItem(new \Ease\Html\UlTag(null,
-                ['class' => 'nav navbar-nav']));
-        $this->tagType          = 'nav';
-        $pullRigt               = new \Ease\Html\DivTag(null,
-            ['class' => 'pull-right']);
-        $this->navRight         = $pullRigt->addItem(new \Ease\Html\UlTag(null,
-                ['class' => 'nav navbar-nav nav-right']));
+        $navCollapse = $this->addItem(new \Ease\Html\DivTag(null,
+                        ['class' => 'collapse navbar-collapse navbar-' . $name . '-collapse']));
+        $this->nav = $navCollapse->addItem(new \Ease\Html\UlTag(null,
+                        ['class' => 'nav navbar-nav']));
+        $this->tagType = 'nav';
+        $pullRigt = new \Ease\Html\DivTag(null,
+                ['class' => 'pull-right']);
+        $this->navRight = $pullRigt->addItem(new \Ease\Html\UlTag(null,
+                        ['class' => 'nav navbar-nav nav-right']));
         $navCollapse->addItem($pullRigt);
         Part::twBootstrapize();
     }
@@ -71,19 +71,18 @@ class Navbar extends \Ease\Html\DivTag
      * 
      * @return \Ease\Html\DivTag
      */
-    public static function navBarHeader($handle, $brand)
-    {
-        $navstyle       = '.navbar-'.$handle.'-collapse';
+    public static function navBarHeader($handle, $brand) {
+        $navstyle = '.navbar-' . $handle . '-collapse';
         $nbhc['button'] = new \Ease\Html\ButtonTag([new \Ease\Html\Span(
-                _('Switch navigation'), ['class' => 'sr-only']), new \Ease\Html\Span(
-                null, ['class' => 'icon-bar']), new \Ease\Html\Span(
-                null, ['class' => 'icon-bar']), new \Ease\Html\Span(
-                null, ['class' => 'icon-bar'])],
-            ['type' => 'button', 'class' => 'navbar-toggle', 'data-toggle' => 'collapse',
+                    _('Switch navigation'), ['class' => 'sr-only']), new \Ease\Html\Span(
+                    null, ['class' => 'icon-bar']), new \Ease\Html\Span(
+                    null, ['class' => 'icon-bar']), new \Ease\Html\Span(
+                    null, ['class' => 'icon-bar'])],
+                ['type' => 'button', 'class' => 'navbar-toggle', 'data-toggle' => 'collapse',
             'data-target' => $navstyle,]);
         if (strlen($brand)) {
             $nbhc['brand'] = new \Ease\Html\ATag('./', $brand,
-                ['class' => 'navbar-brand']);
+                    ['class' => 'navbar-brand']);
         }
 
         return new \Ease\Html\DivTag($nbhc, ['class' => 'navbar-header']);
@@ -97,8 +96,7 @@ class Navbar extends \Ease\Html\DivTag
      *
      * @return EasePage poiner to object well included
      */
-    public function &addItem($Item, $PageItemName = null)
-    {
+    public function &addItem($Item, $PageItemName = null) {
         $added = $this->menuInnerContent->addItem($Item, $PageItemName);
 
         return $added;
@@ -109,8 +107,7 @@ class Navbar extends \Ease\Html\DivTag
      * 
      * @return array|mixed
      */
-    public function emptyContents()
-    {
+    public function emptyContents() {
         $this->menuInnerContent = null;
     }
 
@@ -119,8 +116,7 @@ class Navbar extends \Ease\Html\DivTag
      * 
      * @return array|mixed
      */
-    public function getContents()
-    {
+    public function getContents() {
         return $this->menuInnerContent;
     }
 
@@ -131,8 +127,7 @@ class Navbar extends \Ease\Html\DivTag
      *
      * @return bool emptiness status
      */
-    public function isEmpty($element = null)//: bool
-    {
+    public function isEmpty($element = null) {//: bool
         return !count($this->menuInnerContent);
     }
 
@@ -144,8 +139,7 @@ class Navbar extends \Ease\Html\DivTag
      *
      * @return EaseWebPage
      */
-    public function &addMenuItem($pageItem, $pull = 'left')
-    {
+    public function &addMenuItem($pageItem, $pull = 'left') {
         if ($pull == 'left') {
             $menuItem = $this->nav->addItemSmart($pageItem);
         } else {
@@ -178,10 +172,9 @@ class Navbar extends \Ease\Html\DivTag
      *
      * @return \Ease\Html\UlTag
      */
-    public function &addDropDownSubmenu($name, $items)
-    {
+    public function &addDropDownSubmenu($name, $items) {
         $dropdown = $this->addItem(new \Ease\Html\UlTag(null,
-                ['class' => 'dropdown-menu', 'role' => 'menu']));
+                        ['class' => 'dropdown-menu', 'role' => 'menu']));
         if (count($items)) {
             foreach ($items as $item) {
                 $this->addMenuItem($item);
@@ -200,32 +193,31 @@ class Navbar extends \Ease\Html\DivTag
      *
      * @return \Ease\Html\ULTag
      */
-    public function &addDropDownMenu($label, $items, $pull = 'left')
-    {
+    public function &addDropDownMenu($label, $items, $pull = 'left') {
         Part::twBootstrapize();
         \Ease\WebPage::singleton()->addJavaScript('$(\'.dropdown-toggle\').dropdown();',
-            null, true);
-        $dropDown     = new \Ease\Html\LiTag(null,
-            ['class' => 'dropdown', 'id' => $label]);
+                null, true);
+        $dropDown = new \Ease\Html\LiTag(null,
+                ['class' => 'dropdown', 'id' => $label]);
         $dropDown->addItem(new \Ease\Html\ATag('#',
-                $label.'<b class="caret"></b>',
-                ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']));
+                        $label . '<b class="caret"></b>',
+                        ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']));
         $dropDownMenu = $dropDown->addItem(new \Ease\Html\UlTag(null,
-                ['class' => 'dropdown-menu']));
+                        ['class' => 'dropdown-menu']));
         if (is_array($items)) {
             foreach ($items as $target => $label) {
                 if (is_array($label)) {
                     //Submenu
                     $dropDownMenu->addItem($this->addDropDownSubmenu($target,
-                            $label));
+                                    $label));
                 } else {
                     //Item
                     if (!$target) {
                         $dropDownMenu->addItem(new \Ease\Html\LiTag(null,
-                                ['class' => 'divider']));
+                                        ['class' => 'divider']));
                     } else {
                         $dropDownMenu->addItemSmart(new \Ease\Html\ATag($target,
-                                $label));
+                                        $label));
                     }
                 }
             }
@@ -240,4 +232,5 @@ class Navbar extends \Ease\Html\DivTag
 
         return $dropDown;
     }
+
 }

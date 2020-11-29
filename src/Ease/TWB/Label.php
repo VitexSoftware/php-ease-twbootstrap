@@ -1,12 +1,12 @@
 <?php
+
 /**
  * Návěstí bootstrapu.
  */
 
 namespace Ease\TWB;
 
-class Label extends \Ease\Html\Span
-{
+class Label extends \Ease\Html\Span {
 
     /**
      * Návěstí bootstrapu.
@@ -18,13 +18,13 @@ class Label extends \Ease\Html\Span
      * @param array  $properties
      */
     public function __construct($type = 'default', $content = null,
-                                $properties = [])
-    {
+            $properties = []) {
         if (isset($properties['class'])) {
-            $properties['class'] .= ' label label-'.$type;
+            $properties['class'] .= ' label label-' . $type;
         } else {
-            $properties['class'] = ' label label-'.$type;
+            $properties['class'] = ' label label-' . $type;
         }
         parent::__construct($content, $properties);
     }
+
 }

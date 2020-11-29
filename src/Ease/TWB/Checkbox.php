@@ -1,12 +1,13 @@
 <?php
+
 /**
  * Checkbox pro TwitterBootstrap.
  */
 
 namespace Ease\TWB;
 
-class Checkbox extends \Ease\Html\DivTag
-{
+class Checkbox extends \Ease\Html\DivTag {
+
     /**
      * Odkaz na checkbox.
      *
@@ -24,14 +25,14 @@ class Checkbox extends \Ease\Html\DivTag
      * @param array      $properties
      */
     public function __construct($name = null, $value = 'on', $content = null,
-                                $checked = false, $properties = [])
-    {
-        $label          = new \Ease\Html\LabelTag($name);
+            $checked = false, $properties = []) {
+        $label = new \Ease\Html\LabelTag($name);
         $this->checkbox = $label->addItem(new \Ease\Html\CheckboxTag($name,
-                $checked, $value, $properties));
+                        $checked, $value, $properties));
         if ($content) {
             $label->addItem($content);
         }
         parent::__construct($label);
     }
+
 }
