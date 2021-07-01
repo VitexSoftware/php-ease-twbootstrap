@@ -1,4 +1,4 @@
-php-ease-bootstrap (0.4.3) UNRELEASED; urgency=medium
+php-vitexsoftware-ease-bootstrap (1.1) UNRELEASED; urgency=medium
 
   [ Vítězslav Dvořák ]
   * First release
@@ -11,5 +11,7 @@ php-ease-bootstrap (0.4.3) UNRELEASED; urgency=medium
   * Release v0.4.2
   * Release v0.4.2
   * Release v0.4.2
+  * Fix of Dependency fix
+  * Fix of Dependency fix
 
- -- CyberVitexus <vitex@exiv.jinonice.czf>  Sat, 08 Aug 2020 21:18:43 +0200
+ -- CyberVitexus <vitex@exiv.jinonice.czf>  Sun, 24 Jan 2021 16:12:13 +0100

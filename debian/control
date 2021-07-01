@@ -1,4 +1,4 @@
-Source: php-ease-bootstrap
+Source: php-vitexsoftware-ease-bootstrap
 Build-Depends: debhelper (>= 7.0.50~)
 Section: web
 Standards-Version: 3.9.8
@@ -7,11 +7,11 @@ Uploaders: Vitex <vitex@hippy.cz>
 Priority: optional
 Homepage: https://github.com/VitexSoftware/ease-twbootstrap
 
-Package: php-ease-bootstrap
-Depends: ${misc:Depends},php-ease-html
+Package: php-vitexsoftware-ease-bootstrap
+Depends: ${misc:Depends},php-vitexsoftware-ease-html
 Architecture: all
 Conflicts: ease-framework
-Suggests: php-ease-bricks
+Suggests: php-vitexsoftware-ease-bricks
 Section: web
 Priority: optional
 Description: Set of Twitter Bootstrap 3 rendering objects
