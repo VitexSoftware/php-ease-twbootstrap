@@ -2,8 +2,8 @@
 
 namespace Ease\TWB;
 
-class Col extends \Ease\Html\DivTag {
-
+class Col extends \Ease\Html\DivTag
+{
     /**
      * Bunka CSS tabulky bootstrapu.
      *
@@ -14,8 +14,12 @@ class Col extends \Ease\Html\DivTag {
      * @param string $target     Typ zařízení xs|sm|md|lg
      * @param array  $properties Další vlastnosti tagu
      */
-    public function __construct($size, $content = null, $target = 'md',
-            $properties = []) {
+    public function __construct(
+        $size,
+        $content = null,
+        $target = 'md',
+        $properties = []
+    ) {
         if (array_key_exists('class', $properties)) {
             $addClass = $properties['class'];
         } else {
@@ -27,5 +31,4 @@ class Col extends \Ease\Html\DivTag {
             $this->addTagClass($addClass);
         }
     }
-
 }

@@ -7,8 +7,8 @@ namespace Ease\TWB;
  *
  * @author vitex
  */
-class Textarea extends \Ease\Html\TextareaTag {
-
+class Textarea extends \Ease\Html\TextareaTag
+{
     /**
      * Textarea.
      *
@@ -16,9 +16,9 @@ class Textarea extends \Ease\Html\TextareaTag {
      * @param string $content    obsah textarey
      * @param array  $properties vlastnosti tagu
      */
-    public function __construct($name, $content = '', $properties = []) {
+    public function __construct($name, $content = '', $properties = [])
+    {
         parent::__construct($name, $content, $properties);
         $this->addTagClass('form-control');
     }
-
 }

@@ -6,14 +6,15 @@
 
 namespace Ease\TWB;
 
-class Row extends \Ease\Html\DivTag {
-
+class Row extends \Ease\Html\DivTag
+{
     /**
      * Twitter Bootrstap Row.
      *
      * @param mixed $content Prvotní obsah
      */
-    public function __construct($content = null) {
+    public function __construct($content = null)
+    {
         parent::__construct($content, ['class' => 'row']);
     }
 
@@ -30,11 +31,14 @@ class Row extends \Ease\Html\DivTag {
      *
      * @return Col Column contains $content
      */
-    public function &addColumn($size, $content = null, $target = 'md',
-            $properties = []) {
+    public function &addColumn(
+        $size,
+        $content = null,
+        $target = 'md',
+        $properties = []
+    ) {
         $added = $this->addItem(new Col($size, $content, $target, $properties));
 
         return $added;
     }
-
 }

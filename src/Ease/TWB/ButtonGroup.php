@@ -13,14 +13,15 @@ namespace Ease\TWB;
  *
  * @author vitex
  */
-class ButtonGroup extends \Ease\Html\DivTag {
-
+class ButtonGroup extends \Ease\Html\DivTag
+{
     /**
      * Button Group
      *
      * @param string $label aria-label
      */
-    public function __construct($label = '') {
+    public function __construct($label = '')
+    {
         $properties = ['role' => 'group',
             'class' => 'btn-group',
             'aria-label' => $label];
@@ -35,7 +36,8 @@ class ButtonGroup extends \Ease\Html\DivTag {
      * @param array  $properties adittional properties
      * @return \Ease\Html\ButtonTag Button inserted
      */
-    public function addButton($content, $type = 'default', $properties = []) {
+    public function addButton($content, $type = 'default', $properties = [])
+    {
         if (isset($properties['class'])) {
             $properties['class'] = 'btn btn-' . $type . ' ' . $properties['class'];
         } else {
@@ -44,5 +46,4 @@ class ButtonGroup extends \Ease\Html\DivTag {
         $button = new \Ease\Html\ButtonTag($content, $properties);
         return $this->addItem($button);
     }
-
 }

@@ -10,8 +10,8 @@ namespace Ease\TWB;
  *
  * @link      http://twitter.github.com/bootstrap/base-css.html#buttons Buttons
  */
-class LinkButton extends \Ease\Html\ATag {
-
+class LinkButton extends \Ease\Html\ATag
+{
     /**
      * Odkazové tlačítko twbootstrabu.
      *
@@ -20,8 +20,12 @@ class LinkButton extends \Ease\Html\ATag {
      * @param string $type       primary|info|success|warning|danger|inverse|link
      * @param array  $properties dodatečné vlastnosti
      */
-    public function __construct($href, $contents = null, $type = null,
-            $properties = []) {
+    public function __construct(
+        $href,
+        $contents = null,
+        $type = null,
+        $properties = []
+    ) {
         if (isset($properties['class'])) {
             $class = ' ' . $properties['class'];
         } else {
@@ -36,5 +40,4 @@ class LinkButton extends \Ease\Html\ATag {
         parent::__construct($href, $contents, $properties);
         Part::twBootstrapize();
     }
-
 }

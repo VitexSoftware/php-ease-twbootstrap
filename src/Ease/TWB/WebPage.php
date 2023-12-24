@@ -10,23 +10,23 @@ namespace Ease\TWB;
  *
  * @link       http://twitter.github.com/bootstrap/index.html
  */
-class WebPage extends \Ease\WebPage {
-
+class WebPage extends \Ease\WebPage
+{
     /**
      * Where to look for bootstrap stylesheet
-     * @var string path or url 
+     * @var string path or url
      */
     public $bootstrapCSS = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';
 
     /**
      * Where to look for bootstrap stylesheet theme
-     * @var string path or url 
+     * @var string path or url
      */
     public $bootstrapThemeCSS = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css';
 
     /**
      * Where to look for bootstrap stylesheet scripts
-     * @var string path or url 
+     * @var string path or url
      */
     public $bootstrapJavaScript = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js';
 
@@ -35,11 +35,12 @@ class WebPage extends \Ease\WebPage {
      *
      * @param string   $pageTitle
      */
-    public function __construct($pageTitle = null) {
+    public function __construct($pageTitle = null)
+    {
         parent::__construct($pageTitle);
         Part::twBootstrapize();
         $this->head->addItem(
-                '<meta name="viewport" content="width=device-width,initial-scale=1.0">'
+            '<meta name="viewport" content="width=device-width,initial-scale=1.0">'
         );
     }
 
@@ -50,7 +51,8 @@ class WebPage extends \Ease\WebPage {
      *
      * @return string html of status messages
      */
-    public function getStatusMessagesAsHtml($what = null) {
+    public function getStatusMessagesAsHtml($what = null)
+    {
         /*
          * Session Singleton Problem hack
          */
@@ -91,5 +93,4 @@ class WebPage extends \Ease\WebPage {
 
         return $htmlFargment;
     }
-
 }

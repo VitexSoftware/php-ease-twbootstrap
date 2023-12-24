@@ -9,8 +9,8 @@ namespace Ease\TWB;
  *
  * @author Vítězslav Dvořák <vitex@hippy.cz>
  */
-class Tabs extends \Ease\Container {
-
+class Tabs extends \Ease\Container
+{
     /**
      * Název.
      *
@@ -39,8 +39,11 @@ class Tabs extends \Ease\Container {
      * @param array  $tabsList
      * @param array  $tagProperties
      */
-    public function __construct($partName, $tabsList = null,
-            $tagProperties = null) {
+    public function __construct(
+        $partName,
+        $tabsList = null,
+        $tagProperties = null
+    ) {
         $this->partName = $partName;
         parent::__construct();
         if (is_array($tabsList)) {
@@ -60,7 +63,8 @@ class Tabs extends \Ease\Container {
      *
      * @return \Ease\Html\DivTag odkaz na vložený obsah
      */
-    public function &addTab($tabName, $tabContent = null, $active = false) {
+    public function &addTab($tabName, $tabContent = null, $active = false)
+    {
         if (is_null($tabContent)) {
             $tabContent = new \Ease\Html\DivTag();
         }
@@ -81,7 +85,8 @@ class Tabs extends \Ease\Container {
      *
      * @return \Ease\Html\DivTag odkaz na vložený obsah
      */
-    public function &addAjaxTab($tabName, $tabUrl, $active = false) {
+    public function &addAjaxTab($tabName, $tabUrl, $active = false)
+    {
         $this->tabs[$tabName] = ['ajax' => $tabUrl];
         if ($active) {
             $this->activeTab = $tabName;
@@ -109,19 +114,23 @@ $(\'#' . $this->getTagID() . ' a\').click(function (e) {
      *
      * @return string
      */
-    public function getTagID() {
+    public function getTagID()
+    {
         return $this->partName;
     }
 
     /**
      * Vložení skriptu a divů do stránky.
      */
-    public function finalize() {
+    public function finalize()
+    {
         if (is_null($this->activeTab)) {
             $this->activeTab = current(array_keys($this->tabs));
         }
-        $tabsUl = $this->addItem(new \Ease\Html\UlTag(null,
-                        ['class' => 'nav nav-tabs', 'id' => $this->partName]));
+        $tabsUl = $this->addItem(new \Ease\Html\UlTag(
+            null,
+            ['class' => 'nav nav-tabs', 'id' => $this->partName]
+        ));
         foreach ($this->tabs as $tabName => $tab) {
             $tabProperties = ['data-toggle' => 'tab'];
             if (key($tab) == 'ajax') {
@@ -129,15 +138,23 @@ $(\'#' . $this->getTagID() . ' a\').click(function (e) {
             }
             $anchor = '#' . \Ease\Functions::lettersOnly(str_replace(['(', ')'], '', $this->partName . $tabName));
             if ($tabName == $this->activeTab) {
-                $tabsUl->addItem(new \Ease\Html\LiTag(new \Ease\Html\ATag($anchor,
-                                        $tabName, $tabProperties), ['class' => 'active']));
+                $tabsUl->addItem(new \Ease\Html\LiTag(new \Ease\Html\ATag(
+                    $anchor,
+                    $tabName,
+                    $tabProperties
+                ), ['class' => 'active']));
             } else {
-                $tabsUl->addItem(new \Ease\Html\LiTag(new \Ease\Html\ATag($anchor,
-                                        $tabName, $tabProperties)));
+                $tabsUl->addItem(new \Ease\Html\LiTag(new \Ease\Html\ATag(
+                    $anchor,
+                    $tabName,
+                    $tabProperties
+                )));
             }
         }
-        $tabDiv = $this->addItem(new \Ease\Html\DivTag(null,
-                        ['id' => $this->partName . 'body', 'class' => 'tab-content']));
+        $tabDiv = $this->addItem(new \Ease\Html\DivTag(
+            null,
+            ['id' => $this->partName . 'body', 'class' => 'tab-content']
+        ));
         foreach ($this->tabs as $tabName => $tab) {
             switch (key($tab)) {
                 case 'static':
@@ -149,13 +166,19 @@ $(\'#' . $this->getTagID() . ' a\').click(function (e) {
             }
 
             if ($tabName == $this->activeTab) {
-                $tabDiv->addItem(new \Ease\Html\DivTag($tabContent,
-                                ['id' => $this->partName . \Ease\Functions::lettersOnly($tabName),
-                            'class' => 'tab-pane active',]));
+                $tabDiv->addItem(new \Ease\Html\DivTag(
+                    $tabContent,
+                    ['id' => $this->partName . \Ease\Functions::lettersOnly($tabName),
+                    'class' => 'tab-pane active',
+                    ]
+                ));
             } else {
-                $tabDiv->addItem(new \Ease\Html\DivTag($tabContent,
-                                ['id' => $this->partName . \Ease\Functions::lettersOnly($tabName),
-                            'class' => 'tab-pane',]));
+                $tabDiv->addItem(new \Ease\Html\DivTag(
+                    $tabContent,
+                    ['id' => $this->partName . \Ease\Functions::lettersOnly($tabName),
+                    'class' => 'tab-pane',
+                    ]
+                ));
             }
         }
         Part::twBootstrapize();
@@ -170,11 +193,12 @@ $(\'#' . $this->partName . $this->activeTab . '\').load($(\'.active a\').attr("d
 ');
         } else {
             \Ease\WebPage::singleton()->addJavaScript(
-                    '
+                '
         $(\'#' . $this->partName . ' a[href="#' . \Ease\Functions::lettersOnly($this->activeTab) . '"]\').tab(\'show\');
-', null, true
+',
+                null,
+                true
             );
         }
     }
-
 }

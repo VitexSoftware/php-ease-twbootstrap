@@ -5,8 +5,8 @@ namespace Ease\TWB;
 /**
  * @deprecated since version 1.0
  */
-class GlyphIcon extends \Ease\Html\Span {
-
+class GlyphIcon extends \Ease\Html\Span
+{
     /**
      * Vloží ikonu.
      *
@@ -14,8 +14,8 @@ class GlyphIcon extends \Ease\Html\Span {
      *
      * @param string $code Kód ikony z přehledu
      */
-    public function __construct($code) {
+    public function __construct($code)
+    {
         parent::__construct(null, ['class' => 'glyphicon glyphicon-' . $code]);
     }
-
 }

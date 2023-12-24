@@ -2,8 +2,8 @@
 
 namespace Ease\TWB;
 
-class ButtonDropdown extends \Ease\Html\DivTag {
-
+class ButtonDropdown extends \Ease\Html\DivTag
+{
     /**
      * Rozbalovací nabídka.
      *
@@ -25,18 +25,27 @@ class ButtonDropdown extends \Ease\Html\DivTag {
      * @param array  $items      položky menu
      * @param array  $properties Parametry tagu
      */
-    public function __construct($label = null, $type = 'default', $size = null,
-            $items = null, $properties = []) {
+    public function __construct(
+        $label = null,
+        $type = 'default',
+        $size = null,
+        $items = null,
+        $properties = []
+    ) {
         parent::__construct(null, $properties);
         $this->setTagClass('btn-group');
         $btnClass = 'btn btn-' . $type . ' ';
         if (!empty($size)) {
             $btnClass .= 'btn-' . $size;
         }
-        $this->button = $this->addItem(new \Ease\Html\ButtonTag([$label . ' <span class="caret"></span>'],
-                        ['class' => $btnClass . ' dropdown-toggle', 'type' => 'button', 'data-toggle' => 'dropdown']));
-        $this->dropdown = $this->addItem(new \Ease\Html\UlTag(null,
-                        ['class' => 'dropdown-menu', 'role' => 'menu']));
+        $this->button = $this->addItem(new \Ease\Html\ButtonTag(
+            [$label . ' <span class="caret"></span>'],
+            ['class' => $btnClass . ' dropdown-toggle', 'type' => 'button', 'data-toggle' => 'dropdown']
+        ));
+        $this->dropdown = $this->addItem(new \Ease\Html\UlTag(
+            null,
+            ['class' => 'dropdown-menu', 'role' => 'menu']
+        ));
         if (count($items)) {
             foreach ($items as $item) {
                 $this->addMenuItem($item);
@@ -51,7 +60,8 @@ class ButtonDropdown extends \Ease\Html\DivTag {
      *
      * @return \Ease\Html\LiTag
      */
-    public function addMenuItem($pageItem) {
+    public function addMenuItem($pageItem)
+    {
         return $this->dropdown->addItemSmart($pageItem);
     }
 
@@ -60,8 +70,8 @@ class ButtonDropdown extends \Ease\Html\DivTag {
      *
      * @return \Ease\Html\LiTag
      */
-    public static function divider() {
+    public static function divider()
+    {
         return new \Ease\Html\LiTag(null, ['class' => 'divider']);
     }
-
 }
