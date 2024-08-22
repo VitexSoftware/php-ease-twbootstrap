@@ -20,7 +20,7 @@ class Panel extends \Ease\Html\DivTag
      *
      * @var \Ease\Html\DivTag
      */
-    public $body = null;
+    public $body;
 
     /**
      * Patička panelu.
@@ -66,12 +66,28 @@ class Panel extends \Ease\Html\DivTag
                 ['class' => 'panel-heading']
             ), 'head');
         }
-        $this->body = parent::addItem(new \Ease\Html\DivTag(
-            $body,
-            ['class' => 'panel-body']
-        ), 'body');
+        if($body){
+            $this->getBody($body);
+        }
     }
 
+    /**
+     * Ensure the body is initialized
+     * 
+     * @param mixed $initialContent
+     * 
+     * @return \Ease\Html\DivTag body
+     */
+    public function getBody($initialContent = '') {
+        if(is_null($this->body)){
+            $this->body = parent::addItem(new \Ease\Html\DivTag(
+                $initialContent,
+                ['class' => 'panel-body']
+            ), 'body');
+        }
+        return $this->body;
+    }
+    
     /**
      * Vloží další element do objektu.
      *
@@ -82,8 +98,7 @@ class Panel extends \Ease\Html\DivTag
      */
     public function &addItem($pageItem, $pageItemName = null)
     {
-        $added = $this->body->addItem($pageItem, $pageItemName);
-
+        $added = $this->getBody()->addItem($pageItem, $pageItemName);
         return $added;
     }
 
