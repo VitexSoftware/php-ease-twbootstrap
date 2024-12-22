@@ -83,7 +83,7 @@ class Panel extends \Ease\Html\DivTag
      */
     public function getBody($initialContent = '')
     {
-        if (null === $this->body) {
+        if (isset($this->body) === false ) {
             $this->body = parent::addItem(new \Ease\Html\DivTag(
                 $initialContent,
                 ['class' => 'panel-body'],
@@ -131,7 +131,7 @@ class Panel extends \Ease\Html\DivTag
      */
     public function footer($content = null)
     {
-        if (\is_object($this->footer)) {
+        if (isset($this->footer)) {
             if ($content) {
                 $this->footer->addItem($content);
             }
