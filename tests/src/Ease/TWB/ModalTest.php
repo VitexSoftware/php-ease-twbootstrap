@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\Ease\TWB;
 
 /**
@@ -7,13 +20,7 @@ namespace Test\Ease\TWB;
  */
 class ModalTest extends \Test\Ease\Html\DivTagTest
 {
-    /**
-     * @var Modal
-     */
-    protected $object;
-
-    public $rendered = '<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="ModalID" aria-hidden="true"></div>';
-
+    public string $rendered = '<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="ModalID" aria-hidden="true"></div>';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -32,9 +39,9 @@ class ModalTest extends \Test\Ease\Html\DivTagTest
     {
     }
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
-        $classname = get_class($this->object);
+        $classname = \get_class($this->object);
 
         // Get mock, without the constructor being called
         $mock = $this->getMockBuilder($classname)
@@ -46,15 +53,15 @@ class ModalTest extends \Test\Ease\Html\DivTagTest
     }
 
     /**
-     * @covers Ease\TWB\Modal::finalize
+     * @covers \Ease\TWB\Modal::finalize
      *
      * @todo   Implement testFinalize().
      */
-    public function testFinalize()
+    public function testFinalize(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 }

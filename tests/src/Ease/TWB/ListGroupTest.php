@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\Ease\TWB;
 
 /**
@@ -7,11 +20,7 @@ namespace Test\Ease\TWB;
  */
 class ListGroupTest extends \Test\Ease\Html\UlTagTest
 {
-    /**
-     * @var ListGroup
-     */
-    protected $object;
-    public $rendered = '<ul class="list-group"></ul>';
+    public string $rendered = '<ul class="list-group"></ul>';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -28,19 +37,18 @@ class ListGroupTest extends \Test\Ease\Html\UlTagTest
      */
     protected function tearDown(): void
     {
-        
     }
 
     /**
-     * @covers Ease\TWB\ListGroup::addItemSmart
+     * @covers \Ease\TWB\ListGroup::addItemSmart
      *
      * @todo   Implement testAddItemSmart().
      */
-    public function testAddItemSmart()
+    public function testAddItemSmart(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 }

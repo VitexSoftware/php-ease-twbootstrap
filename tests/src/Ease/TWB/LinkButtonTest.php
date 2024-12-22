@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\Ease\TWB;
 
 /**
@@ -7,14 +20,9 @@ namespace Test\Ease\TWB;
  */
 class LinkButtonTest extends \Test\Ease\Html\ATagTest
 {
+    public string $rendered = '<a class="btn btn-default" href="http://v.s.cz/">test</a>';
+
     /**
-     * @var LinkButton
-     */
-    protected $object;
-
-    public $rendered = '<a class="btn btn-default" href="http://v.s.cz/">test</a>';
-
-        /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
@@ -31,25 +39,26 @@ class LinkButtonTest extends \Test\Ease\Html\ATagTest
     {
     }
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
-        $classname = get_class($this->object);
+        $classname = \get_class($this->object);
 
         // Get mock, without the constructor being called
         $mock = $this->getMockBuilder($classname)
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();
-        $mock->__construct("http://vitexsoftware.cz/");
+        $mock->__construct('http://vitexsoftware.cz/');
     }
 
     /**
-     * @covers Ease\TWB\LinkButton::tagPropertiesToString
+     * @covers \Ease\TWB\LinkButton::tagPropertiesToString
      */
-    public function testTagPropertiesToString()
+    public function testTagPropertiesToString(): void
     {
         $this->object->setTagProperties(['id' => 'Test', 'name' => 'unit']);
-        $this->assertEquals('class="btn btn-default" href="http://v.s.cz/" id="Test" name="unit"',
-            $this->object->tagPropertiesToString());
+        $this->assertEquals(
+            'class="btn btn-default" href="http://v.s.cz/" id="Test" name="unit"',
+            $this->object->tagPropertiesToString(),
+        );
     }
-
 }

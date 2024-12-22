@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\Ease\TWB;
 
 /**
@@ -7,14 +20,12 @@ namespace Test\Ease\TWB;
  */
 class StatusMessagesTest extends \Test\Ease\Html\DivTagTest
 {
-    /**
-     * @var StatusMessages
-     */
-    protected $object;
-    public $rendered = '<div><div class="MessageForUser" style="color: blue;" >test</div>
+    public string $rendered = <<<'EOD'
+<div><div class="MessageForUser" style="color: blue;" >test</div>
 <div class="MessageForUser" style="color: #2C5F23;" >test</div>
 <div class="MessageForUser" style="color: black;" >test</div>
-<div class="MessageForUser" style="color: #AB250E;" >test</div></div>';
+<div class="MessageForUser" style="color: #AB250E;" >test</div></div>
+EOD;
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -22,7 +33,7 @@ class StatusMessagesTest extends \Test\Ease\Html\DivTagTest
      */
     protected function setUp(): void
     {
-        $shared       = \Ease\Shared::instanced();
+        $shared = \Ease\Shared::instanced();
         $this->object = new \Ease\TWB\StatusMessages();
         $shared->cleanMessages();
         $shared->addStatusMessage('test');
@@ -37,6 +48,5 @@ class StatusMessagesTest extends \Test\Ease\Html\DivTagTest
      */
     protected function tearDown(): void
     {
-        
     }
 }

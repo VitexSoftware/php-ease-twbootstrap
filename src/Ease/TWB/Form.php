@@ -1,7 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Formulář Bootstrapu.
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Ease\TWB;
@@ -9,10 +18,10 @@ namespace Ease\TWB;
 class Form extends \Ease\Html\Form
 {
     /**
-     * Bootstrap3 Form
+     * Bootstrap3 Form.
      *
-     * @param string $properties    Several tag properties. Default method is POST
-     * @param mixed  $formContents  prvky uvnitř formuláře
+     * @param string $properties   Several tag properties. Default method is POST
+     * @param mixed  $formContents prvky uvnitř formuláře
      */
     public function __construct($properties = [], $formContents = null)
     {
@@ -39,7 +48,7 @@ class Form extends \Ease\Html\Form
             $caption,
             $input,
             $placeholder,
-            $helptext
+            $helptext,
         ));
     }
 
@@ -53,15 +62,16 @@ class Form extends \Ease\Html\Form
      */
     public function &addItem($pageItem, $pageItemName = null)
     {
-        if (is_object($pageItem) && method_exists($pageItem, 'setTagClass')) {
-            if (strtolower($pageItem->getTagType()) == 'select') {
+        if (\is_object($pageItem) && method_exists($pageItem, 'setTagClass')) {
+            if (strtolower($pageItem->getTagType()) === 'select') {
                 $pageItem->setTagClass(trim(str_replace(
                     'form_control',
                     '',
-                    $pageItem->getTagClass() . ' form-control'
+                    $pageItem->getTagClass().' form-control',
                 )));
             }
         }
+
         $added = parent::addItem($pageItem, $pageItemName);
 
         return $added;

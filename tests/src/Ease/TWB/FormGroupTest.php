@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\Ease\TWB;
 
 /**
@@ -7,12 +20,7 @@ namespace Test\Ease\TWB;
  */
 class FormGroupTest extends \Test\Ease\Html\DivTagTest
 {
-    /**
-     * @var FormGroup
-     */
-    protected $object;
-
-    public $rendered = '<div class="form-group"><label for="Label">Label</label><input type="text" name="text" class="form-control" id="Label" /></div>';
+    public string $rendered = '<div class="form-group"><label for="Label">Label</label><input type="text" name="text" class="form-control" id="Label" /></div>';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -20,19 +28,10 @@ class FormGroupTest extends \Test\Ease\Html\DivTagTest
      */
     protected function setUp(): void
     {
-        $this->object = new \Ease\TWB\FormGroup('Label',
-            new \Ease\Html\InputTextTag('text'));
-    }
-
-    public function testConstructor()
-    {
-        $classname = get_class($this->object);
-
-        // Get mock, without the constructor being called
-        $mock = $this->getMockBuilder($classname)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-        $mock->__construct('Label', new \Ease\Html\InputTextTag('text'));
+        $this->object = new \Ease\TWB\FormGroup(
+            'Label',
+            new \Ease\Html\InputTextTag('text'),
+        );
     }
 
     /**
@@ -41,6 +40,16 @@ class FormGroupTest extends \Test\Ease\Html\DivTagTest
      */
     protected function tearDown(): void
     {
-        
+    }
+
+    public function testConstructor(): void
+    {
+        $classname = \get_class($this->object);
+
+        // Get mock, without the constructor being called
+        $mock = $this->getMockBuilder($classname)
+            ->disableOriginalConstructor()
+            ->getMockForAbstractClass();
+        $mock->__construct('Label', new \Ease\Html\InputTextTag('text'));
     }
 }

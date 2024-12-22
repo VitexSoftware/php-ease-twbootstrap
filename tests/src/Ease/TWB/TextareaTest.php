@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\Ease\TWB;
 
 /**
@@ -7,12 +20,7 @@ namespace Test\Ease\TWB;
  */
 class TextareaTest extends \Test\Ease\Html\TextareaTagTest
 {
-    /**
-     * @var Textarea
-     */
-    protected $object;
-
-    public $rendered = '<textarea name="test" class="form-control"></textarea>';
+    public string $rendered = '<textarea name="test" class="form-control"></textarea>';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -32,9 +40,9 @@ class TextareaTest extends \Test\Ease\Html\TextareaTagTest
     }
 
     /**
-     * @covers Ease\TWB\Textarea::getTagName
+     * @covers \Ease\TWB\Textarea::getTagName
      */
-    public function testGetTagName()
+    public function testGetTagName(): void
     {
         $this->assertEquals('test', $this->object->getTagName());
     }

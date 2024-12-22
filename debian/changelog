@@ -1,4 +1,10 @@
-php-vitexsoftware-ease-bootstrap (1.1) UNRELEASED; urgency=medium
+php-vitexsoftware-ease-bootstrap (1.1.1) UNRELEASED; urgency=medium
+
+  * modernized
+
+ -- vitex <info@vitexsoftware.cz>  Sun, 22 Dec 2024 18:22:18 +0100
+
+php-vitexsoftware-ease-bootstrap (1.1) unstable; urgency=medium
 
   [ Vítězslav Dvořák ]
   * First release
@@ -14,4 +20,4 @@ php-vitexsoftware-ease-bootstrap (1.1) UNRELEASED; urgency=medium
   * Fix of Dependency fix
   * Fix of Dependency fix
 
- -- CyberVitexus <vitex@exiv.jinonice.czf>  Sun, 24 Jan 2021 16:12:13 +0100
+ -- vitex <info@vitexsoftware.cz>  Sun, 22 Dec 2024 18:22:08 +0100

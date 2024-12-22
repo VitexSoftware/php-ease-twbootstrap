@@ -1,36 +1,41 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\TWB;
 
 class RadioButtonGroup extends \Ease\Container
 {
     /**
      * Jméno.
-     *
-     * @var string
      */
-    public $name = null;
+    public string $name = null;
 
     /**
      * Typ.
-     *
-     * @var bool
      */
-    public $inline = false;
+    public bool $inline = false;
 
     /**
      * Položky k zobrazení.
-     *
-     * @var array
      */
-    public $radios = [];
+    public array $radios = [];
 
     /**
      * Předvolená hodnota.
-     *
-     * @var string
      */
-    public $checked = null;
+    public string $checked = null;
 
     /**
      * Zobrazí pole radiobuttonů.
@@ -52,29 +57,33 @@ class RadioButtonGroup extends \Ease\Container
     /**
      * Seskládá pole radiobuttonů.
      */
-    public function finalize()
+    public function finalize(): void
     {
         $class = 'radio';
+
         if ($this->inline) {
             $class .= '-inline';
         }
+
         $pos = 1;
+
         foreach ($this->radios as $value => $caption) {
-            if ($value == $this->checked) {
+            if ($value === $this->checked) {
                 $checked = 'checked';
             } else {
                 $checked = null;
             }
-            $tagProperties = ['id' => $this->name . $pos++, 'name' => $this->name,
-                $checked,];
+
+            $tagProperties = ['id' => $this->name.$pos++, 'name' => $this->name,
+                $checked, ];
             $this->addItem(new \Ease\Html\DivTag(new \Ease\Html\LabelTag(
                 null,
                 [new \Ease\Html\InputRadioTag(
                     $this->name,
                     $value,
-                    $tagProperties
+                    $tagProperties,
                 ),
-                $caption]
+                    $caption],
             ), ['class' => $class]));
         }
     }

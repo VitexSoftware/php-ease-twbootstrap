@@ -1,7 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Panel Twitter Bootstrapu.
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Ease\TWB;
@@ -10,43 +19,35 @@ class Panel extends \Ease\Html\DivTag
 {
     /**
      * Hlavička panelu.
-     *
-     * @var \Ease\Html\DivTag
      */
-    public $heading = null;
+    public \Ease\Html\DivTag $heading;
 
     /**
      * Tělo panelu.
-     *
-     * @var \Ease\Html\DivTag
      */
-    public $body;
+    public \Ease\Html\DivTag $body;
 
     /**
      * Patička panelu.
-     *
-     * @var \Ease\Html\DivTag
      */
-    public $footer = null;
+    public \Ease\Html\DivTag $footer;
 
     /**
      * Typ Panelu.
      *
      * @var string succes|wanring|info|danger
      */
-    public $type = 'default';
+    public string $type = 'default';
 
     /**
      * Obsah k přidání do patičky panelu.
-     *
-     * @var mixed
      */
-    public $addToFooter = null;
+    public mixed $addToFooter = null;
 
     /**
      * Panel Twitter Bootstrapu.
      *
-     * @param string|mixed $heading
+     * @param mixed|string $heading
      * @param string       $type    succes|wanring|info|danger
      * @param mixes        $body    tělo panelu
      * @param mixed        $footer  patička panelu. FALSE = nezobrazit vůbec
@@ -59,35 +60,39 @@ class Panel extends \Ease\Html\DivTag
     ) {
         $this->type = $type;
         $this->addToFooter = $footer;
-        parent::__construct(null, ['class' => 'panel panel-' . $this->type]);
-        if (!is_null($heading)) {
+        parent::__construct(null, ['class' => 'panel panel-'.$this->type]);
+
+        if (null !== $heading) {
             $this->heading = parent::addItem(new \Ease\Html\DivTag(
                 $heading,
-                ['class' => 'panel-heading']
+                ['class' => 'panel-heading'],
             ), 'head');
         }
-        if($body){
+
+        if ($body) {
             $this->getBody($body);
         }
     }
 
     /**
-     * Ensure the body is initialized
-     * 
+     * Ensure the body is initialized.
+     *
      * @param mixed $initialContent
-     * 
+     *
      * @return \Ease\Html\DivTag body
      */
-    public function getBody($initialContent = '') {
-        if(is_null($this->body)){
+    public function getBody($initialContent = '')
+    {
+        if (null === $this->body) {
             $this->body = parent::addItem(new \Ease\Html\DivTag(
                 $initialContent,
-                ['class' => 'panel-body']
+                ['class' => 'panel-body'],
             ), 'body');
         }
+
         return $this->body;
     }
-    
+
     /**
      * Vloží další element do objektu.
      *
@@ -99,17 +104,19 @@ class Panel extends \Ease\Html\DivTag
     public function &addItem($pageItem, $pageItemName = null)
     {
         $added = $this->getBody()->addItem($pageItem, $pageItemName);
+
         return $added;
     }
 
     /**
      * Vloží obsah do patičky.
      */
-    public function finalize()
+    public function finalize(): void
     {
-        if (!count($this->body->pageParts)) {
+        if (!\count($this->body->pageParts)) {
             unset($this->pageParts['body']);
         }
+
         if ($this->addToFooter) {
             $this->footer()->addItem($this->addToFooter);
         }
@@ -124,7 +131,7 @@ class Panel extends \Ease\Html\DivTag
      */
     public function footer($content = null)
     {
-        if (is_object($this->footer)) {
+        if (\is_object($this->footer)) {
             if ($content) {
                 $this->footer->addItem($content);
             }
@@ -132,9 +139,9 @@ class Panel extends \Ease\Html\DivTag
             $this->footer = parent::addItem(
                 new \Ease\Html\DivTag(
                     $content,
-                    ['class' => 'panel-footer panel-' . $this->type]
+                    ['class' => 'panel-footer panel-'.$this->type],
                 ),
-                'footer'
+                'footer',
             );
         }
 

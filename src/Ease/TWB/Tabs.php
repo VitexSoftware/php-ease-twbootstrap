@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Ease\TWB;
 
 /**
@@ -13,29 +26,23 @@ class Tabs extends \Ease\Container
 {
     /**
      * Název.
-     *
-     * @var string
      */
-    public $partName = 'TWBTabs';
+    public string $partName = 'TWBTabs';
 
     /**
      * Array of tab names=>contents.
-     *
-     * @var array
      */
-    public $tabs = [];
+    public array $tabs = [];
 
     /**
      * Jméno aktivního tabu.
-     *
-     * @var string
      */
-    private $activeTab = null;
+    private string $activeTab = '';
 
     /**
      * Create TWBootstrap tabs.
      *
-     * @param string $partName       - DIV id
+     * @param string $partName      - DIV id
      * @param array  $tabsList
      * @param array  $tagProperties
      */
@@ -46,10 +53,12 @@ class Tabs extends \Ease\Container
     ) {
         $this->partName = $partName;
         parent::__construct();
-        if (is_array($tabsList)) {
+
+        if (\is_array($tabsList)) {
             $this->tabs = array_merge($this->tabs, $tabsList);
         }
-        if (!is_null($tagProperties)) {
+
+        if (null !== $tagProperties) {
             $this->setPartProperties($tagProperties);
         }
     }
@@ -65,10 +74,12 @@ class Tabs extends \Ease\Container
      */
     public function &addTab($tabName, $tabContent = null, $active = false)
     {
-        if (is_null($tabContent)) {
+        if (null === $tabContent) {
             $tabContent = new \Ease\Html\DivTag();
         }
+
         $this->tabs[$tabName] = ['static' => $tabContent];
+
         if ($active) {
             $this->activeTab = $tabName;
         }
@@ -77,22 +88,27 @@ class Tabs extends \Ease\Container
     }
 
     /**
-     * Create new Dynamic Tab
+     * Create new Dynamic Tab.
      *
-     * @param string $tabName    jméno a titulek tabu
-     * @param string $tabUrl     where to obtain tab content
-     * @param bool   $active     Má být tento tab aktivní ?
+     * @param string $tabName jméno a titulek tabu
+     * @param string $tabUrl  where to obtain tab content
+     * @param bool   $active  Má být tento tab aktivní ?
      *
      * @return \Ease\Html\DivTag odkaz na vložený obsah
      */
     public function &addAjaxTab($tabName, $tabUrl, $active = false)
     {
         $this->tabs[$tabName] = ['ajax' => $tabUrl];
+
         if ($active) {
             $this->activeTab = $tabName;
         }
-        \Ease\WebPage::singleton()->addJavaScript('
-$(\'#' . $this->getTagID() . ' a\').click(function (e) {
+
+        \Ease\WebPage::singleton()->addJavaScript(<<<'EOD'
+
+$('#
+EOD.$this->getTagID().<<<'EOD'
+ a').click(function (e) {
 	e.preventDefault();
 
 	var url = $(this).attr("data-url");
@@ -101,11 +117,13 @@ $(\'#' . $this->getTagID() . ' a\').click(function (e) {
 
 	// ajax load from data-url
 	$(href).load(url,function(result){
-	    pane.tab(\'show\');
+	    pane.tab('show');
 	});
 });
-            
-');
+
+
+EOD);
+
         return $this->tabs[$tabName];
     }
 
@@ -122,82 +140,99 @@ $(\'#' . $this->getTagID() . ' a\').click(function (e) {
     /**
      * Vložení skriptu a divů do stránky.
      */
-    public function finalize()
+    public function finalize(): void
     {
-        if (is_null($this->activeTab)) {
+        if (null === $this->activeTab) {
             $this->activeTab = current(array_keys($this->tabs));
         }
+
         $tabsUl = $this->addItem(new \Ease\Html\UlTag(
             null,
-            ['class' => 'nav nav-tabs', 'id' => $this->partName]
+            ['class' => 'nav nav-tabs', 'id' => $this->partName],
         ));
+
         foreach ($this->tabs as $tabName => $tab) {
             $tabProperties = ['data-toggle' => 'tab'];
-            if (key($tab) == 'ajax') {
+
+            if (key($tab) === 'ajax') {
                 $tabProperties['data-url'] = current($tab);
             }
-            $anchor = '#' . \Ease\Functions::lettersOnly(str_replace(['(', ')'], '', $this->partName . $tabName));
-            if ($tabName == $this->activeTab) {
+
+            $anchor = '#'.\Ease\Functions::lettersOnly(str_replace(['(', ')'], '', $this->partName.$tabName));
+
+            if ($tabName === $this->activeTab) {
                 $tabsUl->addItem(new \Ease\Html\LiTag(new \Ease\Html\ATag(
                     $anchor,
                     $tabName,
-                    $tabProperties
+                    $tabProperties,
                 ), ['class' => 'active']));
             } else {
                 $tabsUl->addItem(new \Ease\Html\LiTag(new \Ease\Html\ATag(
                     $anchor,
                     $tabName,
-                    $tabProperties
+                    $tabProperties,
                 )));
             }
         }
+
         $tabDiv = $this->addItem(new \Ease\Html\DivTag(
             null,
-            ['id' => $this->partName . 'body', 'class' => 'tab-content']
+            ['id' => $this->partName.'body', 'class' => 'tab-content'],
         ));
+
         foreach ($this->tabs as $tabName => $tab) {
             switch (key($tab)) {
                 case 'static':
                     $tabContent = current($tab);
+
                     break;
                 case 'ajax':
                     $tabContent = '';
+
                     break;
             }
 
-            if ($tabName == $this->activeTab) {
+            if ($tabName === $this->activeTab) {
                 $tabDiv->addItem(new \Ease\Html\DivTag(
                     $tabContent,
-                    ['id' => $this->partName . \Ease\Functions::lettersOnly($tabName),
-                    'class' => 'tab-pane active',
-                    ]
+                    ['id' => $this->partName.\Ease\Functions::lettersOnly($tabName),
+                        'class' => 'tab-pane active',
+                    ],
                 ));
             } else {
                 $tabDiv->addItem(new \Ease\Html\DivTag(
                     $tabContent,
-                    ['id' => $this->partName . \Ease\Functions::lettersOnly($tabName),
-                    'class' => 'tab-pane',
-                    ]
+                    ['id' => $this->partName.\Ease\Functions::lettersOnly($tabName),
+                        'class' => 'tab-pane',
+                    ],
                 ));
             }
         }
+
         Part::twBootstrapize();
 
+        if (key($this->tabs[$this->activeTab]) === 'ajax') {
+            \Ease\WebPage::singleton()->addJavaScript(<<<'EOD'
 
-        if (key($this->tabs[$this->activeTab]) == 'ajax') {
-            \Ease\WebPage::singleton()->addJavaScript('
 // load first tab content
-$(\'#' . $this->partName . $this->activeTab . '\').load($(\'.active a\').attr("data-url"),function(result){
-  $(\'.active a\').tab(\'show\');
+$('#
+EOD.$this->partName.$this->activeTab.<<<'EOD'
+').load($('.active a').attr("data-url"),function(result){
+  $('.active a').tab('show');
 });
-');
+
+EOD);
         } else {
             \Ease\WebPage::singleton()->addJavaScript(
-                '
-        $(\'#' . $this->partName . ' a[href="#' . \Ease\Functions::lettersOnly($this->activeTab) . '"]\').tab(\'show\');
-',
+                <<<'EOD'
+
+        $('#
+EOD.$this->partName.' a[href="#'.\Ease\Functions::lettersOnly($this->activeTab).<<<'EOD'
+"]').tab('show');
+
+EOD,
                 null,
-                true
+                true,
             );
         }
     }

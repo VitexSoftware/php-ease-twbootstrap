@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\Ease\TWB;
 
 /**
@@ -7,12 +20,7 @@ namespace Test\Ease\TWB;
  */
 class GlyphIconTest extends \Test\Ease\Html\SpanTest
 {
-    /**
-     * @var GlyphIcon
-     */
-    protected $object;
-
-    public $rendered = '<span class="glyphicon glyphicon-test"></span>';
+    public string $rendered = '<span class="glyphicon glyphicon-test"></span>';
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
@@ -30,9 +38,9 @@ class GlyphIconTest extends \Test\Ease\Html\SpanTest
     {
     }
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
-        $classname = get_class($this->object);
+        $classname = \get_class($this->object);
 
         // Get mock, without the constructor being called
         $mock = $this->getMockBuilder($classname)

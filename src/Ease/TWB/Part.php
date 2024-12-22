@@ -1,9 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Twitter Bootstrap common class.
+ * This file is part of the EaseTWBootstrap3 package
  *
- * @author Vitex <vitex@hippy.cz>
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Ease\TWB;
@@ -28,26 +35,27 @@ class Part extends \Ease\Part
         \Ease\WebPage::singleton()->includeCSS(\Ease\WebPage::singleton()->bootstrapCSS);
         \Ease\WebPage::singleton()->includeCSS(\Ease\WebPage::singleton()->bootstrapThemeCSS);
         \Ease\WebPage::singleton()->includeJavaScript(\Ease\WebPage::singleton()->bootstrapJavaScript);
+
         return true;
     }
 
     /**
      * Vrací ikonu.
      *
-     * @link  http://getbootstrap.com/components/#glyphicons Přehled ikon
+     * @see  http://getbootstrap.com/components/#glyphicons Přehled ikon
      *
      * @param string $code       Kód ikony z přehledu
      * @param array  $properties Vlastnosti Tagu
      */
     public static function glyphIcon($code, $properties = [])
     {
-        if (is_null($properties)) {
-            $properties = ['class' => 'glyphicon glyphicon-' . $code];
+        if (null === $properties) {
+            $properties = ['class' => 'glyphicon glyphicon-'.$code];
         } else {
             if (isset($properties['class'])) {
-                $properties['class'] = 'glyphicon glyphicon-' . $code . ' ' . $properties['class'];
+                $properties['class'] = 'glyphicon glyphicon-'.$code.' '.$properties['class'];
             } else {
-                $properties['class'] = 'glyphicon glyphicon-' . $code;
+                $properties['class'] = 'glyphicon glyphicon-'.$code;
             }
         }
 

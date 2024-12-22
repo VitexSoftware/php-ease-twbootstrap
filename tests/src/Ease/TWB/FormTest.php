@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\Ease\TWB;
 
 /**
@@ -7,11 +20,7 @@ namespace Test\Ease\TWB;
  */
 class FormTest extends \Test\Ease\Html\FormTest
 {
-    /**
-     * @var Form
-     */
-    protected $object;
-    public $rendered = '<form method="post" name="form" class="form-horizontal" role="form"></form>';
+    public string $rendered = '<form method="post" name="form" class="form-horizontal" role="form"></form>';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -28,39 +37,38 @@ class FormTest extends \Test\Ease\Html\FormTest
      */
     protected function tearDown(): void
     {
-        
     }
 
     /**
-     * @covers Ease\TWB\Form::addInput
+     * @covers \Ease\TWB\Form::addInput
      *
      * @todo   Implement testAddInput().
      */
-    public function testAddInput()
+    public function testAddInput(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 
     /**
-     * @covers Ease\TWB\Form::addItem
+     * @covers \Ease\TWB\Form::addItem
      *
      * @todo   Implement testAddItem().
      */
-    public function testAddItem()
+    public function testAddItem(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 
     /**
-     * @covers Ease\TWB\Form::getTagName
+     * @covers \Ease\TWB\Form::getTagName
      */
-    public function testGetTagName()
+    public function testGetTagName(): void
     {
         $this->assertEquals('form', $this->object->getTagName());
     }

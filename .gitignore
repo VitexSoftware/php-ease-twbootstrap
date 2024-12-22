@@ -1,2 +1,4 @@
 /debian/php-ease-bootstrap/
 /debian/.debhelper
+.build/
+.phpunit.result.cache

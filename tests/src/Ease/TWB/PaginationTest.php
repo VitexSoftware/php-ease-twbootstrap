@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\Ease\TWB;
 
 /**
@@ -7,11 +20,7 @@ namespace Test\Ease\TWB;
  */
 class PaginationTest extends \Test\Ease\Html\UlTagTest
 {
-    /**
-     * @var Pagination
-     */
-    protected $object;
-    public $rendered = '<ul class="pagination"><li><a href="?page=0"><span class="glyphicon glyphicon-fast-backward"></span></a></li><li><a href="?page=1"><span class="glyphicon glyphicon-chevron-left"></span></a></li><li><a href="?page=0">1</a></li><li><a href="?page=1">2</a></li><li class="active"><a href="?page=2">3</a></li><li class="disabled"><a href="?page=#"><span class="glyphicon glyphicon-chevron-right"></span></a></li><li class="disabled"><a href="?page=#"><span class="glyphicon glyphicon-fast-forward"></span></a></li></ul>';
+    public string $rendered = '<ul class="pagination"><li><a href="?page=0"><span class="glyphicon glyphicon-fast-backward"></span></a></li><li><a href="?page=1"><span class="glyphicon glyphicon-chevron-left"></span></a></li><li><a href="?page=0">1</a></li><li><a href="?page=1">2</a></li><li class="active"><a href="?page=2">3</a></li><li class="disabled"><a href="?page=#"><span class="glyphicon glyphicon-chevron-right"></span></a></li><li class="disabled"><a href="?page=#"><span class="glyphicon glyphicon-fast-forward"></span></a></li></ul>';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -28,12 +37,11 @@ class PaginationTest extends \Test\Ease\Html\UlTagTest
      */
     protected function tearDown(): void
     {
-        
     }
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
-        $classname = get_class($this->object);
+        $classname = \get_class($this->object);
 
         // Get mock, without the constructor being called
         $mock = $this->getMockBuilder($classname)
@@ -44,15 +52,15 @@ class PaginationTest extends \Test\Ease\Html\UlTagTest
     }
 
     /**
-     * @covers Ease\TWB\Pagination::addPage
+     * @covers \Ease\TWB\Pagination::addPage
      *
      * @todo   Implement testAddPage().
      */
-    public function testAddPage()
+    public function testAddPage(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 }

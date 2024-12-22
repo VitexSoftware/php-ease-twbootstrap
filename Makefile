@@ -1,37 +1,28 @@
-repoversion=$(shell LANG=C aptitude show php-ease-bootstrap | grep Version: | awk '{print $$2}')
-nextversion=$(shell echo $(repoversion) | perl -ne 'chomp; print join(".", splice(@{[split/\./,$$_]}, 0, -1), map {++$$_} pop @{[split/\./,$$_]}), "\n";')
+# vim: set tabstop=8 softtabstop=8 noexpandtab:
+.PHONY: help
+help: ## Displays this list of targets with descriptions
+	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}'
 
+.PHONY: static-code-analysis
+static-code-analysis: vendor ## Runs a static code analysis with phpstan/phpstan
+	vendor/bin/phpstan analyse --configuration=phpstan-default.neon.dist --memory-limit=-1
 
+.PHONY: static-code-analysis-baseline
+static-code-analysis-baseline: check-symfony vendor ## Generates a baseline for static code analysis with phpstan/phpstan
+	vendor/bin/phpstan analyze --configuration=phpstan-default.neon.dist --generate-baseline=phpstan-default-baseline.neon --memory-limit=-1
 
-#DESTDIR ?= debian/php-ease-bootstrap/DEBIAN
-#libdir  ?= /usr/share/php/Ease
-#docdir  ?= /doc/ease-bootstrap/bootstrap
+.PHONY: tests
+tests: vendor
+	vendor/bin/phpunit tests
 
-all: build install
-
-fresh:
-	git pull origin master
-	PACKAGE=`cat debian/composer.json | grep '"name"' | head -n 1 |  awk -F'"' '{print $4}'`; \
-	VERSION=`cat debian/composer.json | grep version | awk -F'"' '{print $4}'`; \
-	dch -b -v "${VERSION}" --package ${PACKAGE} "$CHANGES" \
+.PHONY: vendor
+vendor: composer.json composer.lock ## Installs composer dependencies
 	composer install
-	
-#install:
-#	mkdir -p $(DESTDIR)$(libdir)
-#	cp -r src/Ease/ $(DESTDIR)$(libdir)
-#	cp -r debian/composer.json $(DESTDIR)$(libdir)
-#	mkdir -p $(DESTDIR)$(docdir)
-#	cp -r docs $(DESTDIR)$(docdir)
-	
-#build: doc
-#	echo build;	
 
-clean:
-	rm -rf vendor composer.lock
-	rm -rf debian/php-ease-bootstrap
-	rm -rf debian/php-ease-bootstrap-doc
-	rm -rf debian/*.log debian/tmp
-	rm -rf docs/*
+.PHONY: cs
+cs: ## Update Coding Standards
+	vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php --diff --verbose
+
 
 apigen:
 	VERSION=`cat debian/composer.json | grep version | awk -F'"' '{print $4}'`; \

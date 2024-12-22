@@ -1,10 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Twitter Bootrstap Container.
+ * This file is part of the EaseTWBootstrap3 package
  *
- * @author    Vitex <vitex@hippy.cz>
- * @copyright 2009-2016 Vitex@hippy.cz (G)
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Ease\TWB;
@@ -16,31 +22,23 @@ class Carousel extends \Ease\Html\DivTag
 {
     /**
      * Carousel name.
-     *
-     * @var string
      */
-    public $name = null;
+    public string $name = '';
 
     /**
      * Carousel's inner div.
-     *
-     * @var \Ease\Html\DivTag
      */
-    public $inner = null;
+    public \Ease\Html\DivTag $inner;
 
     /**
      * Carousel's inner div.
-     *
-     * @var \Ease\Html\OlTag
      */
-    public $indicators = null;
+    public \Ease\Html\OlTag $indicators;
 
     /**
      * Which slide is active ?
-     *
-     * @var int
      */
-    public $active = null;
+    public int $active = 0;
 
     /**
      * Twitter bootstrap Carousel.
@@ -57,18 +55,18 @@ class Carousel extends \Ease\Html\DivTag
         $this->setTagClass('carousel slide');
         $this->indicators = $this->addItem(new \Ease\Html\OlTag(
             null,
-            ['class' => 'carousel-indicators']
+            ['class' => 'carousel-indicators'],
         ));
         $this->inner = $this->addItem(new \Ease\Html\DivTag(
             null,
-            ['class' => 'carousel-inner', 'role' => 'listbox']
+            ['class' => 'carousel-inner', 'role' => 'listbox'],
         ));
     }
 
     /**
      * Carousel Slide.
      *
-     * @param mixed|ImgTag $slide      body Image or something else
+     * @param ImgTag|mixed $slide      body Image or something else
      * @param string       $capHeading
      * @param string       $caption
      * @param bool         $default    show slide by default
@@ -78,8 +76,9 @@ class Carousel extends \Ease\Html\DivTag
         $capHeading = '',
         $caption = '',
         $default = false
-    ) {
+    ): void {
         $item = new \Ease\Html\DivTag($slide, ['class' => 'item']);
+
         if ($default) {
             $item->addTagClass('active');
         }
@@ -87,24 +86,29 @@ class Carousel extends \Ease\Html\DivTag
         if ($capHeading || $caption) {
             $cpt = $item->addItem(new \Ease\Html\DivTag(
                 null,
-                ['class' => 'carousel-caption']
+                ['class' => 'carousel-caption'],
             ));
+
             if ($capHeading) {
                 $cpt->addItem(new \Ease\Html\H4Tag($capHeading));
             }
+
             if ($caption) {
                 $cpt->addItem(new \Ease\Html\PTag($caption));
             }
         }
+
         $to = $this->indicators->getItemsCount();
         $indicator = new \Ease\Html\LiTag(
             null,
-            ['data-target' => '#' . $this->name, 'data-slide-to' => $to]
+            ['data-target' => '#'.$this->name, 'data-slide-to' => $to],
         );
+
         if ($default) {
             $indicator->addTagClass('active');
             $this->active = $to;
         }
+
         $this->indicators->addItem($indicator);
         $this->inner->addItem($item);
     }
@@ -112,44 +116,47 @@ class Carousel extends \Ease\Html\DivTag
     /**
      * Add Navigation buttons.
      */
-    public function finalize()
+    public function finalize(): void
     {
         Part::twBootstrapize();
-        if (is_null($this->active) && $this->getItemsCount()) { //We need one slide active
+
+        if (null === $this->active && $this->getItemsCount()) { // We need one slide active
             $this->indicators->getFirstPart()->setTagClass('active');
             $this->inner->getFirstPart()->addTagClass('active');
         }
+
         $this->inner->addItem(
             new \Ease\Html\ATag(
-                '#' . $this->getTagID(),
+                '#'.$this->getTagID(),
                 [
                     new \Ease\Html\Span(
                         null,
-                        ['class' => 'glyphicon glyphicon-chevron-left', 'aria-hidden' => 'true']
+                        ['class' => 'glyphicon glyphicon-chevron-left', 'aria-hidden' => 'true'],
                     ),
                     new \Ease\Html\Span(_('Previous'), ['class' => 'sr-only']),
-                        ],
-                ['class' => 'left carousel-control', 'data-slide' => 'prev', 'role' => 'button']
-            )
+                ],
+                ['class' => 'left carousel-control', 'data-slide' => 'prev', 'role' => 'button'],
+            ),
         );
         $this->inner->addItem(
             new \Ease\Html\ATag(
-                '#' . $this->getTagID(),
+                '#'.$this->getTagID(),
                 [
                     new \Ease\Html\Span(
                         null,
-                        ['class' => 'glyphicon glyphicon-chevron-right', 'aria-hidden' => 'true']
+                        ['class' => 'glyphicon glyphicon-chevron-right', 'aria-hidden' => 'true'],
                     ),
                     new \Ease\Html\Span(_('Next'), ['class' => 'sr-only']),
-                        ],
-                ['class' => 'right carousel-control', 'data-slide' => 'next', 'role' => 'button']
-            )
+                ],
+                ['class' => 'right carousel-control', 'data-slide' => 'next', 'role' => 'button'],
+            ),
         );
-        if ($this->getTagProperty('data-ride') != 'carousel') {
+
+        if ($this->getTagProperty('data-ride') !== 'carousel') {
             $this->addJavaScript(
-                '$(\'#' . $this->name . '\').carousel();',
+                '$(\'#'.$this->name.'\').carousel();',
                 null,
-                true
+                true,
             );
         }
     }

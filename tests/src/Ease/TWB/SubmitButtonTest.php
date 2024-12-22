@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\Ease\TWB;
 
 /**
@@ -7,12 +20,7 @@ namespace Test\Ease\TWB;
  */
 class SubmitButtonTest extends \Test\Ease\Html\ButtonTagTest
 {
-    /**
-     * @var SubmitButton
-     */
-    protected $object;
-    
-    public $rendered = '<button class="btn"></button>';
+    public string $rendered = '<button class="btn"></button>';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -31,9 +39,9 @@ class SubmitButtonTest extends \Test\Ease\Html\ButtonTagTest
     {
     }
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
-        $classname = get_class($this->object);
+        $classname = \get_class($this->object);
 
         // Get mock, without the constructor being called
         $mock = $this->getMockBuilder($classname)
@@ -44,12 +52,15 @@ class SubmitButtonTest extends \Test\Ease\Html\ButtonTagTest
 
     /**
      * @covers \Ease\TWB\SubmitButton::draw
+     *
+     * @param null|mixed $whatWant
      */
-    public function testDraw($whatWant = null)
+    public function testDraw($whatWant = null): void
     {
-        if (is_null($whatWant)) {
+        if (null === $whatWant) {
             $whatWant = "\n<button class=\"btn\"></button>";
         }
+
         parent::testDraw($whatWant);
     }
 }

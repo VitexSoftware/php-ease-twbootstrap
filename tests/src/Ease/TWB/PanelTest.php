@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\Ease\TWB;
 
 /**
@@ -7,13 +20,7 @@ namespace Test\Ease\TWB;
  */
 class PanelTest extends \Test\Ease\Html\DivTagTest
 {
-    /**
-     * @var Panel
-     */
-    protected $object;
-
-    public $rendered = '<div class="panel panel-default"><div class="panel-body"></div></div>';
-
+    public string $rendered = '<div class="panel panel-default"><div class="panel-body"></div></div>';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -30,12 +37,11 @@ class PanelTest extends \Test\Ease\Html\DivTagTest
      */
     protected function tearDown(): void
     {
-
     }
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
-        $classname = get_class($this->object);
+        $classname = \get_class($this->object);
 
         // Get mock, without the constructor being called
         $mock = $this->getMockBuilder($classname)
@@ -43,66 +49,73 @@ class PanelTest extends \Test\Ease\Html\DivTagTest
             ->getMockForAbstractClass();
         $mock->__construct('Test');
 
-        $mock->__construct('PanelTest', 'danger', 'body', 'footer',
-            ['title' => 'test']);
+        $mock->__construct(
+            'PanelTest',
+            'danger',
+            'body',
+            'footer',
+            ['title' => 'test'],
+        );
     }
 
     /**
-     * @covers Ease\TWB\Panel::addItem
+     * @covers \Ease\TWB\Panel::addItem
      *
      * @todo   Implement testAddItem().
      */
-    public function testAddItem()
+    public function testAddItem(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 
     /**
-     * @covers Ease\TWB\Panel::finalize
+     * @covers \Ease\TWB\Panel::finalize
      *
      * @todo   Implement testFinalize().
      */
-    public function testFinalize()
+    public function testFinalize(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 
     /**
-     * @covers Ease\TWB\Panel::footer
+     * @covers \Ease\TWB\Panel::footer
      *
      * @todo   Implement testFooter().
      */
-    public function testFooter()
+    public function testFooter(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 
     /**
-     * @covers Ease\TWB\Panel::getItemsCount
+     * @covers \Ease\TWB\Panel::getItemsCount
      */
-    public function testGetItemsCount()
+    public function testGetItemsCount(): void
     {
         $this->object->emptyContents();
         $this->assertEquals(0, $this->object->getItemsCount());
         $this->object->addItem('@');
         $this->assertEquals(0, $this->object->getItemsCount());
-        $this->assertEquals(2,
-            $this->object->getItemsCount(new \Ease\Html\DivTag(['a', 'b'])));
+        $this->assertEquals(
+            2,
+            $this->object->getItemsCount(new \Ease\Html\DivTag(['a', 'b'])),
+        );
     }
 
     /**
-     * @covers Ease\TWB\Panel::isEmpty
+     * @covers \Ease\TWB\Panel::isEmpty
      */
-    public function testIsEmpty()
+    public function testIsEmpty(): void
     {
         $this->object->emptyContents();
         $this->assertTrue($this->object->isEmpty());
@@ -111,12 +124,16 @@ class PanelTest extends \Test\Ease\Html\DivTagTest
     }
 
     /**
-     * @covers Ease\TWB\Panel::draw
+     * @covers \Ease\TWB\Panel::draw
+     *
+     * @param null|mixed $whatWant
      */
-    public function testDraw($whatWant = null)
+    public function testDraw($whatWant = null): void
     {
-        parent::testDraw('
+        parent::testDraw(<<<'EOD'
+
 <div class="panel panel-default">
-<div class="panel-body"></div></div>');
+<div class="panel-body"></div></div>
+EOD);
     }
 }

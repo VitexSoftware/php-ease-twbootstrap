@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\Ease\TWB;
 
 /**
@@ -7,10 +20,6 @@ namespace Test\Ease\TWB;
  */
 class TabsTest extends \Test\Ease\ContainerTest
 {
-    /**
-     * @var Tabs
-     */
-    protected $object;
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -29,9 +38,9 @@ class TabsTest extends \Test\Ease\ContainerTest
     {
     }
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
-        $classname = get_class($this->object);
+        $classname = \get_class($this->object);
 
         // Get mock, without the constructor being called
         $mock = $this->getMockBuilder($classname)
@@ -41,41 +50,41 @@ class TabsTest extends \Test\Ease\ContainerTest
     }
 
     /**
-     * @covers Ease\TWB\Tabs::addTab
+     * @covers \Ease\TWB\Tabs::addTab
      *
      * @todo   Implement testAddTab().
      */
-    public function testAddTab()
+    public function testAddTab(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 
     /**
-     * @covers Ease\TWB\Tabs::getTagID
+     * @covers \Ease\TWB\Tabs::getTagID
      *
      * @todo   Implement testGetTagID().
      */
-    public function testGetTagID()
+    public function testGetTagID(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 
     /**
-     * @covers Ease\TWB\Tabs::finalize
+     * @covers \Ease\TWB\Tabs::finalize
      *
      * @todo   Implement testFinalize().
      */
-    public function testFinalize()
+    public function testFinalize(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 }

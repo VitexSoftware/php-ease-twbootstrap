@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\Ease\TWB;
 
 /**
@@ -7,12 +20,8 @@ namespace Test\Ease\TWB;
  */
 class WebPageTest extends \Test\Ease\WebPageTest
 {
-    /**
-     * @var WebPage
-     */
-    protected $object;
-    
-    public $rendered = '<!DOCTYPE html><html lang="cs-CZ"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0"><title></title><link href="/javascript/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen" /><style></style>
+    public string $rendered = <<<'EOD'
+<!DOCTYPE html><html lang="cs-CZ"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0"><title></title><link href="/javascript/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen" /><style></style>
 <script>
 // <![CDATA[
 window.location = "login.php"
@@ -24,7 +33,8 @@ window.location = "login.php"
 window.location = "http://v.s.cz/"
 // ]]>
 </script>
-</head><body></body></html>';
+</head><body></body></html>
+EOD;
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -44,15 +54,15 @@ window.location = "http://v.s.cz/"
     }
 
     /**
-     * @covers Ease\TWB\WebPage::getStatusMessagesAsHtml
+     * @covers \Ease\TWB\WebPage::getStatusMessagesAsHtml
      *
      * @todo   Implement testGetStatusMessagesAsHtml().
      */
-    public function testGetStatusMessagesAsHtml()
+    public function testGetStatusMessagesAsHtml(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 }

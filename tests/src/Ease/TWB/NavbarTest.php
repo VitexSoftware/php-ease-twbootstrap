@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\Ease\TWB;
 
 /**
@@ -7,13 +20,7 @@ namespace Test\Ease\TWB;
  */
 class NavbarTest extends \Test\Ease\Html\DivTagTest
 {
-    /**
-     * @var Navbar
-     */
-    protected $object;
-
-    public $rendered = '<nav class="navbar navbar-default" role="navigation" name="Navbar"><div class="navbar-inner"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-Navbar-collapse"><span class="sr-only">Switch navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div><div class="collapse navbar-collapse navbar-Navbar-collapse"><ul class="nav navbar-nav"></ul><div class="pull-right"><ul class="nav navbar-nav nav-right"></ul></div></div></div></nav>';
-
+    public string $rendered = '<nav class="navbar navbar-default" role="navigation" name="Navbar"><div class="navbar-inner"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-Navbar-collapse"><span class="sr-only">Switch navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div><div class="collapse navbar-collapse navbar-Navbar-collapse"><ul class="nav navbar-nav"></ul><div class="pull-right"><ul class="nav navbar-nav nav-right"></ul></div></div></div></nav>';
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -32,9 +39,9 @@ class NavbarTest extends \Test\Ease\Html\DivTagTest
     {
     }
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
-        $classname = get_class($this->object);
+        $classname = \get_class($this->object);
 
         // Get mock, without the constructor being called
         $mock = $this->getMockBuilder($classname)
@@ -46,69 +53,69 @@ class NavbarTest extends \Test\Ease\Html\DivTagTest
     }
 
     /**
-     * @covers Ease\TWB\Navbar::NavBarHeader
+     * @covers \Ease\TWB\Navbar::NavBarHeader
      */
-    public function testNavBarHeader()
+    public function testNavBarHeader(): void
     {
-        $this->assertEquals('', (string)\Ease\TWB\Navbar::navBarHeader('handle', 'brand'));
+        $this->assertEquals('', (string) \Ease\TWB\Navbar::navBarHeader('handle', 'brand'));
     }
 
     /**
-     * @covers Ease\TWB\Navbar::addItem
+     * @covers \Ease\TWB\Navbar::addItem
      *
      * @todo   Implement testAddItem().
      */
-    public function testAddItem()
+    public function testAddItem(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 
     /**
-     * @covers Ease\TWB\Navbar::addMenuItem
+     * @covers \Ease\TWB\Navbar::addMenuItem
      *
      * @todo   Implement testAddMenuItem().
      */
-    public function testAddMenuItem()
+    public function testAddMenuItem(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 
     /**
-     * @covers Ease\TWB\Navbar::addDropDownSubmenu
+     * @covers \Ease\TWB\Navbar::addDropDownSubmenu
      *
      * @todo   Implement testAddDropDownSubmenu().
      */
-    public function testAddDropDownSubmenu()
+    public function testAddDropDownSubmenu(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 
     /**
-     * @covers Ease\TWB\Navbar::addDropDownMenu
+     * @covers \Ease\TWB\Navbar::addDropDownMenu
      *
      * @todo   Implement testAddDropDownMenu().
      */
-    public function testAddDropDownMenu()
+    public function testAddDropDownMenu(): void
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+            'This test has not been implemented yet.',
         );
     }
 
     /**
-     * @covers Ease\TWB\Navbar::isEmpty
+     * @covers \Ease\TWB\Navbar::isEmpty
      */
-    public function testIsEmpty()
+    public function testIsEmpty(): void
     {
         $this->object->emptyContents();
         $this->assertTrue($this->object->isEmpty());
@@ -117,22 +124,24 @@ class NavbarTest extends \Test\Ease\Html\DivTagTest
     }
 
     /**
-     * @covers Ease\TWB\Navbar::getItemsCount
+     * @covers \Ease\TWB\Navbar::getItemsCount
      */
-    public function testGetItemsCount()
+    public function testGetItemsCount(): void
     {
         $this->object->emptyContents();
         $this->assertEquals(0, $this->object->getItemsCount());
         $this->object->addItem('@');
         $this->assertEquals(0, $this->object->getItemsCount());
-        $this->assertEquals(2,
-            $this->object->getItemsCount(new \Ease\Html\DivTag(['a', 'b'])));
+        $this->assertEquals(
+            2,
+            $this->object->getItemsCount(new \Ease\Html\DivTag(['a', 'b'])),
+        );
     }
 
     /**
-     * @covers Ease\TWB\Navbar::getTagName
+     * @covers \Ease\TWB\Navbar::getTagName
      */
-    public function testGetTagName()
+    public function testGetTagName(): void
     {
         $this->assertEquals('Navbar', $this->object->getTagName());
     }

@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the EaseTWBootstrap3 package
+ *
+ * https://github.com/VitexSoftware/php-ease-twbootstrap
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\Ease\TWB;
 
 /**
@@ -7,14 +20,7 @@ namespace Test\Ease\TWB;
  */
 class RadioButtonTest extends \Test\Ease\Html\DivTagTest
 {
-    /**
-     * @var RadioButton
-     */
-    protected $object;
-
-    public $rendered = '<div><label for="radio"><input name="radio" value="X" type="radio" />test</label></div>';
-
-
+    public string $rendered = '<div><label for="radio"><input name="radio" value="X" type="radio" />test</label></div>';
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
@@ -31,5 +37,4 @@ class RadioButtonTest extends \Test\Ease\Html\DivTagTest
     protected function tearDown(): void
     {
     }
-
 }
