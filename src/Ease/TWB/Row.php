@@ -44,7 +44,7 @@ class Row extends \Ease\Html\DivTag
         $size,
         $content = null,
         $target = 'md',
-        $properties = [],
+        $properties = []
     ) {
         $added = $this->addItem(new Col($size, $content, $target, $properties));
 
