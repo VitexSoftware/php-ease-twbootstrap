@@ -42,14 +42,14 @@ class Panel extends \Ease\Html\DivTag
     /**
      * Obsah k přidání do patičky panelu.
      */
-    public ?mixed $addToFooter;
+    public \Ease\Embedable $addToFooter;
 
     /**
      * Panel Twitter Bootstrapu.
      *
      * @param mixed|string $heading
      * @param string       $type    succes|wanring|info|danger
-     * @param mixes        $body    tělo panelu
+     * @param mixed        $body    tělo panelu
      * @param mixed        $footer  patička panelu. FALSE = nezobrazit vůbec
      */
     public function __construct(
@@ -86,7 +86,7 @@ class Panel extends \Ease\Html\DivTag
         if (isset($this->body) === false) {
             $this->body = parent::addItem(new \Ease\Html\DivTag(
                 $initialContent,
-                ['class' => 'panel-body'],
+                ['class' => 'panel-body']
             ), 'body');
         }
 
