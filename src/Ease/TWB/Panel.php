@@ -42,7 +42,7 @@ class Panel extends \Ease\Html\DivTag
     /**
      * Obsah k přidání do patičky panelu.
      */
-    public mixed $addToFooter = null;
+    public ?mixed $addToFooter;
 
     /**
      * Panel Twitter Bootstrapu.
@@ -83,7 +83,7 @@ class Panel extends \Ease\Html\DivTag
      */
     public function getBody($initialContent = '')
     {
-        if (isset($this->body) === false ) {
+        if (isset($this->body) === false) {
             $this->body = parent::addItem(new \Ease\Html\DivTag(
                 $initialContent,
                 ['class' => 'panel-body'],

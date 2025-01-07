@@ -2,3 +2,4 @@
 /debian/.debhelper
 .build/
 .phpunit.result.cache
+/vendor/

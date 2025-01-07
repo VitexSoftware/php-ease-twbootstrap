@@ -32,5 +32,5 @@ if ((\PHP_SAPI !== 'cli') && (session_status() === 'PHP_SESSION_NONE')) {
 \define('DB_PORT', 5432);
 \define('DB_TYPE', 'pgsql');
 
-#\Ease\Shared::user();
-#\Ease\Shared::webPage();
+// \Ease\Shared::user();
+// \Ease\Shared::webPage();
