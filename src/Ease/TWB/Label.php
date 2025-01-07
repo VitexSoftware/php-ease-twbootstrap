@@ -22,9 +22,9 @@ class Label extends \Ease\Html\Span
      *
      * @see http://getbootstrap.com/components/#labels
      *
-     * @param string $type       info|warning|error|success
-     * @param mixed  $content
-     * @param array  $properties
+     * @param string                $type       info|warning|error|success
+     * @param mixed                 $content
+     * @param array<string, string> $properties
      */
     public function __construct(
         $type = 'default',

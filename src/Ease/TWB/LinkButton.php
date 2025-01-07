@@ -28,10 +28,10 @@ class LinkButton extends \Ease\Html\ATag
     /**
      * Odkazové tlačítko twbootstrabu.
      *
-     * @param string $href       cíl odkazu
-     * @param mixed  $contents   obsah tlačítka
-     * @param string $type       primary|info|success|warning|danger|inverse|link
-     * @param array  $properties dodatečné vlastnosti
+     * @param string                $href       cíl odkazu
+     * @param mixed                 $contents   obsah tlačítka
+     * @param string                $type       primary|info|success|warning|danger|inverse|link
+     * @param array<string, string> $properties dodatečné vlastnosti
      */
     public function __construct(
         $href,

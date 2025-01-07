@@ -25,9 +25,9 @@ class Textarea extends \Ease\Html\TextareaTag
     /**
      * Textarea.
      *
-     * @param string $name       jméno tagu
-     * @param string $content    obsah textarey
-     * @param array  $properties vlastnosti tagu
+     * @param string                $name       jméno tagu
+     * @param string                $content    obsah textarey
+     * @param array<string, string> $properties vlastnosti tagu
      */
     public function __construct($name, $content = '', $properties = [])
     {

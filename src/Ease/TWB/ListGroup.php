@@ -22,8 +22,8 @@ class ListGroup extends \Ease\Html\UlTag
      *
      * @see  http://getbootstrap.com/components/#list-group ListGroup
      *
-     * @param mixed $ulContents položky seznamu
-     * @param array $properties parametry tagu
+     * @param mixed                 $ulContents položky seznamu
+     * @param array<string, string> $properties parametry tagu
      */
     public function __construct($ulContents = null, $properties = [])
     {
