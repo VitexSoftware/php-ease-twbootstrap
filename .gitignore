@@ -3,3 +3,5 @@
 .build/
 .phpunit.result.cache
 /vendor/
+/nbproject/private/
+/composer.lock
