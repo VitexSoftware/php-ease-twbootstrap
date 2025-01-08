@@ -25,11 +25,11 @@ class Checkbox extends \Ease\Html\DivTag
     /**
      * Checkbox pro TwitterBootstrap.
      *
-     * @param string     $name
-     * @param int|string $value
-     * @param mixed      $content
-     * @param bool       $checked
-     * @param array      $properties
+     * @param string                $name
+     * @param int|string            $value
+     * @param mixed                 $content
+     * @param bool                  $checked
+     * @param array<string, string> $properties
      */
     public function __construct(
         $name = null,

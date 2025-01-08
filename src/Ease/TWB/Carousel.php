@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Ease\TWB;
 
+use Ease\Html\ImgTag;
+
 /**
  * Carousel for Twitter Bootstrap.
  */
@@ -129,11 +131,11 @@ class Carousel extends \Ease\Html\DivTag
             new \Ease\Html\ATag(
                 '#'.$this->getTagID(),
                 [
-                    new \Ease\Html\Span(
+                    new \Ease\Html\SpanTag(
                         null,
                         ['class' => 'glyphicon glyphicon-chevron-left', 'aria-hidden' => 'true'],
                     ),
-                    new \Ease\Html\Span(_('Previous'), ['class' => 'sr-only']),
+                    new \Ease\Html\SpanTag(_('Previous'), ['class' => 'sr-only']),
                 ],
                 ['class' => 'left carousel-control', 'data-slide' => 'prev', 'role' => 'button'],
             ),
@@ -142,11 +144,11 @@ class Carousel extends \Ease\Html\DivTag
             new \Ease\Html\ATag(
                 '#'.$this->getTagID(),
                 [
-                    new \Ease\Html\Span(
+                    new \Ease\Html\SpanTag(
                         null,
                         ['class' => 'glyphicon glyphicon-chevron-right', 'aria-hidden' => 'true'],
                     ),
-                    new \Ease\Html\Span(_('Next'), ['class' => 'sr-only']),
+                    new \Ease\Html\SpanTag(_('Next'), ['class' => 'sr-only']),
                 ],
                 ['class' => 'right carousel-control', 'data-slide' => 'next', 'role' => 'button'],
             ),

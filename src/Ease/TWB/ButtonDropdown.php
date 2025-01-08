@@ -26,11 +26,11 @@ class ButtonDropdown extends \Ease\Html\DivTag
     /**
      * Tlačítko s rozbalovacím menu.
      *
-     * @param string $label      popisek tlačítka
-     * @param string $type       primary|info|success|warning|danger|inverse|link
-     * @param string $size       lg = velký, sm = menší, xs = nejmenší
-     * @param array  $items      položky menu
-     * @param array  $properties Parametry tagu
+     * @param string                $label      popisek tlačítka
+     * @param string                $type       primary|info|success|warning|danger|inverse|link
+     * @param string                $size       lg = velký, sm = menší, xs = nejmenší
+     * @param array<string, string> $items      položky menu
+     * @param array<string, string> $properties Parametry tagu
      */
     public function __construct(
         $label = null,

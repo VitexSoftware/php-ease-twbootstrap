@@ -20,10 +20,10 @@ class RadioButton extends \Ease\Html\DivTag
     /**
      *  RadioButton Twitter Bootstrapu.
      *
-     * @param string     $name
-     * @param int|string $value
-     * @param mixed      $caption
-     * @param array      $properties
+     * @param string                $name
+     * @param int|string            $value
+     * @param mixed                 $caption
+     * @param array<string, string> $properties
      */
     public function __construct(
         $name = null,

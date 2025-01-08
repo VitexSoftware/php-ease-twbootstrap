@@ -18,15 +18,15 @@ namespace Ease\TWB;
 /**
  * Odznak bootstrapu.
  */
-class Badge extends \Ease\Html\Span
+class Badge extends \Ease\Html\SpanTag
 {
     /**
      * Návěstí bootstrapu.
      *
      * @see http://getbootstrap.com/components/#badges
      *
-     * @param mixed $content
-     * @param array $properties
+     * @param mixed                 $content
+     * @param array<string, string> $properties
      */
     public function __construct($content = null, $properties = [])
     {

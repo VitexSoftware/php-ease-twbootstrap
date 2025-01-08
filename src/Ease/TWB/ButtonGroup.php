@@ -38,9 +38,9 @@ class ButtonGroup extends \Ease\Html\DivTag
     /**
      * Add new button into Group.
      *
-     * @param mixed  $content    Button content
-     * @param string $type       default|info|success|warning|danger
-     * @param array  $properties adittional properties
+     * @param mixed                 $content    Button content
+     * @param string                $type       default|info|success|warning|danger
+     * @param array<string, string> $properties adittional properties
      *
      * @return \Ease\Html\ButtonTag Button inserted
      */
