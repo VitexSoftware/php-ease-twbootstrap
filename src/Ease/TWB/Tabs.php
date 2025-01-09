@@ -211,7 +211,7 @@ EOD);
 
         Part::twBootstrapize();
 
-        if (is_array($this->tabs[$this->activeTab]) && $this->activeTab && key($this->tabs[$this->activeTab]) === 'ajax') {
+        if ($this->activeTab && is_array($this->tabs[$this->activeTab]) && key($this->tabs[$this->activeTab]) === 'ajax') {
             \Ease\WebPage::singleton()->addJavaScript(<<<'EOD'
 
 // load first tab content
