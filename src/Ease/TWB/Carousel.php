@@ -161,5 +161,6 @@ class Carousel extends \Ease\Html\DivTag
                 true,
             );
         }
+        parent::finalize();
     }
 }

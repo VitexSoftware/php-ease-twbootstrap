@@ -120,6 +120,7 @@ class Panel extends \Ease\Html\DivTag
         if ($this->addToFooter) {
             $this->footer()->addItem($this->addToFooter);
         }
+        parent::finalize();
     }
 
     /**

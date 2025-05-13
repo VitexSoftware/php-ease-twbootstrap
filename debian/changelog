@@ -1,8 +1,14 @@
-php-vitexsoftware-ease-bootstrap (1.1.1) UNRELEASED; urgency=medium
+php-vitexsoftware-ease-bootstrap (1.1.2) UNRELEASED; urgency=medium
+
+  * Add finalize call to Carousel, Panel, and Tabs classes
+
+ -- vitex <info@vitexsoftware.cz>  Tue, 13 May 2025 10:21:03 +0200
+
+php-vitexsoftware-ease-bootstrap (1.1.1) unstable; urgency=medium
 
   * modernized
 
- -- vitex <info@vitexsoftware.cz>  Sun, 22 Dec 2024 18:22:18 +0100
+ -- vitex <info@vitexsoftware.cz>  Tue, 13 May 2025 10:21:00 +0200
 
 php-vitexsoftware-ease-bootstrap (1.1) unstable; urgency=medium
 

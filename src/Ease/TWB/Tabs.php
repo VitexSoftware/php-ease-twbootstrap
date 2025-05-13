@@ -235,5 +235,6 @@ EOD,
                 true,
             );
         }
+        parent::finalize();
     }
 }
