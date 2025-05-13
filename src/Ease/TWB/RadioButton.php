@@ -29,7 +29,7 @@ class RadioButton extends \Ease\Html\DivTag
         $name = null,
         $value = null,
         $caption = null,
-        $properties = []
+        $properties = [],
     ) {
         if (isset($properties['id'])) {
             $for = $properties['id'];

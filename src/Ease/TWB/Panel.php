@@ -56,7 +56,7 @@ class Panel extends \Ease\Html\DivTag
         $heading = null,
         $type = 'default',
         $body = null,
-        $footer = null
+        $footer = null,
     ) {
         $this->type = $type;
         $this->addToFooter = $footer;
@@ -120,6 +120,7 @@ class Panel extends \Ease\Html\DivTag
         if ($this->addToFooter) {
             $this->footer()->addItem($this->addToFooter);
         }
+
         parent::finalize();
     }
 

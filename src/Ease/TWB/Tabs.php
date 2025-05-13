@@ -49,7 +49,7 @@ class Tabs extends \Ease\Container
     public function __construct(
         $partName,
         $tabsList = null,
-        $tagProperties = null
+        $tagProperties = null,
     ) {
         $this->partName = $partName;
         parent::__construct();
@@ -235,6 +235,7 @@ EOD,
                 true,
             );
         }
+
         parent::finalize();
     }
 }

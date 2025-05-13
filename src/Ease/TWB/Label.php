@@ -29,7 +29,7 @@ class Label extends \Ease\Html\Span
     public function __construct(
         $type = 'default',
         $content = null,
-        $properties = []
+        $properties = [],
     ) {
         if (isset($properties['class'])) {
             $properties['class'] .= ' label label-'.$type;

@@ -37,7 +37,7 @@ class LinkButton extends \Ease\Html\ATag
         $href,
         $contents = null,
         $type = null,
-        $properties = []
+        $properties = [],
     ) {
         if (isset($properties['class'])) {
             $class = ' '.$properties['class'];

@@ -5,3 +5,6 @@
 /vendor/
 /nbproject/private/
 /composer.lock
+/debian/php-vitexsoftware-ease-bootstrap.debhelper.log
+/debian/php-vitexsoftware-ease-bootstrap.substvars
+/debian/php-vitexsoftware-ease-bootstrap/

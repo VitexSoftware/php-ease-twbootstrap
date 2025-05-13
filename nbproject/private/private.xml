@@ -5,6 +5,8 @@
         <group name="EASE">
             <file>file:/home/vitex/Projects/EASE/php-vitexsoftware-ease-bootstrap/composer.json</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/home/vitex/Projects/VitexSoftware/php-vitexsoftware-ease-twbootstrap3/src/Ease/TWB/Panel.php</file>
+        </group>
     </open-files>
 </project-private>

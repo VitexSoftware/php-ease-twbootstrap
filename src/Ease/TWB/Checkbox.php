@@ -36,7 +36,7 @@ class Checkbox extends \Ease\Html\DivTag
         $value = 'on',
         $content = null,
         $checked = false,
-        $properties = []
+        $properties = [],
     ) {
         $label = new \Ease\Html\LabelTag($name);
         $this->checkbox = $label->addItem(new \Ease\Html\CheckboxTag(

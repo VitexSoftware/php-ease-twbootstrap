@@ -77,7 +77,7 @@ class Carousel extends \Ease\Html\DivTag
         $slide,
         $capHeading = '',
         $caption = '',
-        $default = false
+        $default = false,
     ): void {
         $item = new \Ease\Html\DivTag($slide, ['class' => 'item']);
 
@@ -161,6 +161,7 @@ class Carousel extends \Ease\Html\DivTag
                 true,
             );
         }
+
         parent::finalize();
     }
 }

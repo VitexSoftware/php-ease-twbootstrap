@@ -37,7 +37,7 @@ class ButtonDropdown extends \Ease\Html\DivTag
         $type = 'default',
         $size = null,
         $items = null,
-        $properties = []
+        $properties = [],
     ) {
         parent::__construct(null, $properties);
         $this->setTagClass('btn-group');
