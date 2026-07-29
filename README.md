@@ -1,3 +1,7 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Packaging: deb](https://img.shields.io/badge/packaging-.deb-red?logo=debian&logoColor=white)
+
+
 ![Library logo](https://raw.githubusercontent.com/VitexSoftware/ease-twbootstrap/master/project-logo.png)
 
 [![Latest Stable Version](https://poser.pugx.org/vitexsoftware/ease-twbootstrap/v/stable)](https://packagist.org/packages/vitexsoftware/ease-twbootstrap)
