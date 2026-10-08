@@ -12,3 +12,7 @@ override_dh_auto_test:
 override_dh_install:
 	jq '.address = "'`dpkg-parsechangelog | sed -n 's/^Version: //p'`'"' debian/composer.json |sponge debian/composer.json
 	dh_install
+	# Static Debian autoloader (replaces the removed composer-global-update postinst step)
+	install -D -m 0644 debian/autoload.php debian/php-vitexsoftware-ease-bootstrap/usr/share/php/EaseTWB/autoload.php
+	install -m0755 -d debian/php-vitexsoftware-ease-bootstrap/usr/share/pkg-php-tools/autoloaders
+	echo 'vitexsoftware ease-twbootstrap EaseTWB/autoload.php' > debian/php-vitexsoftware-ease-bootstrap/usr/share/pkg-php-tools/autoloaders/php-vitexsoftware-ease-bootstrap
